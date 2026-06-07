@@ -1,0 +1,403 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="Test Vocacional | Universidad Carrión Porras" description="Descubre tu carrera ideal. Responde nuestras preguntas y conoce qué carreras de la Universidad Carrión Porras se adaptan a tu perfil.">
+  <Header />
+
+  <main class="bg-slate-50 min-h-screen">
+    <!-- Header Banner -->
+    <section class="relative bg-slate-900 text-white py-16 overflow-hidden">
+      <div class="absolute inset-0 opacity-20 bg-[linear-gradient(to_right,#334155_1px,transparent_1px),linear-gradient(to_bottom,#334155_1px,transparent_1px)] bg-[size:4rem_4rem]"></div>
+      <div class="max-w-4xl mx-auto px-4 text-center relative z-10">
+        <span class="text-amber-500 font-bold text-xs uppercase tracking-widest bg-amber-500/10 px-4 py-1.5 rounded-full inline-block mb-4">
+          Descubre tu Futuro
+        </span>
+        <h1 class="text-4xl md:text-5xl font-black mb-6 tracking-tight">Test Vocacional UCP</h1>
+        <p class="text-slate-350 text-base leading-relaxed max-w-2xl mx-auto">
+          ¿Aún no decides qué carrera estudiar? Completa nuestro test interactivo de 8 preguntas situacionales y conoce qué área profesional encaja mejor con tus talentos y pasiones.
+        </p>
+      </div>
+    </section>
+
+    <!-- Quiz Section -->
+    <section class="py-16 max-w-3xl mx-auto px-4 relative z-10">
+      
+      <!-- Card Container -->
+      <div class="bg-white p-8 md:p-12 rounded-3xl border border-slate-200/60 shadow-xl min-h-[450px] flex flex-col justify-between" id="quiz-container">
+        
+        <!-- Welcome Screen -->
+        <div id="welcome-screen" class="text-center py-10 my-auto">
+          <div class="w-20 h-20 bg-amber-500/10 border border-amber-500/25 text-amber-600 rounded-full flex items-center justify-center mx-auto mb-8 text-3xl">
+            <i class="fa-solid fa-graduation-cap"></i>
+          </div>
+          <h2 class="text-2xl md:text-3xl font-extrabold text-slate-950 mb-4 tracking-tight">Comienza tu autodescubrimiento</h2>
+          <p class="text-slate-655 text-sm max-w-md mx-auto leading-relaxed mb-10">
+            Responde honestamente basándote en lo que realmente te gusta y te motiva. Te tomará menos de 3 minutos.
+          </p>
+          <button 
+            id="start-test-btn" 
+            class="bg-amber-600 hover:bg-amber-700 text-white font-bold px-10 py-4 rounded-full text-sm shadow hover:shadow-lg transition-all duration-300 uppercase tracking-wider cursor-pointer"
+          >
+            Iniciar Test
+          </button>
+        </div>
+
+        <!-- Question Screen (Hidden initially) -->
+        <div id="question-screen" class="hidden flex-col justify-between h-full">
+          <div>
+            <!-- Question Progress -->
+            <div class="flex justify-between items-center text-xs font-bold text-slate-400 uppercase tracking-widest mb-6">
+              <span id="question-number">Pregunta 1 de 8</span>
+              <span id="percent-complete">12.5% Completado</span>
+            </div>
+            
+            <!-- Progress Bar -->
+            <div class="w-full bg-slate-100 h-2.5 rounded-full overflow-hidden mb-10">
+              <div id="progress-bar-fill" class="bg-amber-500 h-full w-1/8 transition-all duration-350 ease-out"></div>
+            </div>
+
+            <!-- Question Title -->
+            <h3 id="question-title" class="text-xl md:text-2xl font-bold text-slate-900 mb-8 leading-snug">
+              ¿Qué actividad disfrutas más en tu tiempo libre?
+            </h3>
+
+            <!-- Options Grid -->
+            <div class="space-y-4" id="options-container">
+              <!-- Dynamically populated via JS -->
+            </div>
+          </div>
+
+          <!-- Question Footer / Back button -->
+          <div class="mt-10 pt-6 border-t border-slate-100 flex justify-between items-center">
+            <button 
+              id="back-btn" 
+              class="text-xs font-bold text-slate-500 hover:text-slate-800 transition-colors uppercase tracking-widest disabled:opacity-30 disabled:pointer-events-none flex items-center gap-1.5 cursor-pointer"
+            >
+              <i class="fa-solid fa-arrow-left text-[10px]"></i> Anterior
+            </button>
+            <span class="text-xs text-slate-400 font-semibold">UCP Vocacional</span>
+          </div>
+        </div>
+
+        <!-- Result Screen (Hidden initially) -->
+        <div id="result-screen" class="hidden text-center py-6">
+          <div class="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto mb-6 text-2xl animate-pulse">
+            <i class="fa-solid fa-circle-check"></i>
+          </div>
+          <span class="text-[10px] font-black uppercase tracking-widest bg-amber-500/10 text-amber-600 px-3.5 py-1.5 rounded-full inline-block mb-3">
+            Perfil Dominante
+          </span>
+          <h2 id="result-profile" class="text-2xl md:text-3xl font-extrabold text-slate-900 mb-4">Ingeniería y Tecnología</h2>
+          <p id="result-description" class="text-slate-500 text-sm max-w-lg mx-auto leading-relaxed mb-10">
+            Eres una persona analítica, lógica y te apasiona crear soluciones de software o resolver problemas de infraestructura digital.
+          </p>
+
+          <!-- Recommended Careers Card -->
+          <div class="bg-slate-900 text-white rounded-3xl p-6 md:p-8 text-left mb-10 shadow-lg border border-slate-800 relative overflow-hidden">
+            <div class="absolute -right-6 -bottom-6 w-32 h-32 bg-amber-500/10 rounded-full filter blur-xl pointer-events-none"></div>
+            <h4 class="text-xs font-bold text-amber-500 uppercase tracking-widest mb-4">Carreras Sugeridas en la UCP</h4>
+            <div class="space-y-4" id="recommended-careers-list">
+              <!-- Dynamically populated careers -->
+            </div>
+          </div>
+
+          <!-- Result Actions -->
+          <div class="flex flex-wrap justify-center gap-4">
+            <a 
+              href="/contacto" 
+              class="bg-amber-600 hover:bg-amber-700 text-white font-bold px-8 py-3.5 rounded-full text-xs uppercase tracking-wider shadow hover:shadow-lg transition-all duration-300"
+            >
+              Postular / Más Información
+            </a>
+            <a 
+              href="/simulador" 
+              class="border-2 border-slate-200 hover:border-slate-850 hover:bg-slate-50 text-slate-800 font-bold px-8 py-3.5 rounded-full text-xs uppercase tracking-wider transition-all duration-300"
+            >
+              Simular Matrícula
+            </a>
+            <button 
+              id="retry-btn" 
+              class="w-full text-slate-400 hover:text-slate-600 text-[10px] font-bold uppercase tracking-widest mt-6 transition-colors cursor-pointer"
+            >
+              Reiniciar Test
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
+
+<script>
+  import { careersData } from '../data/carreras';
+
+  // Questions Data
+  interface Option {
+    text: string;
+    category: string; // 'tech', 'hum', 'neg', 'salud'
+  }
+
+  interface Question {
+    title: string;
+    options: Option[];
+  }
+
+  const questions: Question[] = [
+    {
+      title: "¿Qué actividad disfrutas más en tu tiempo libre?",
+      options: [
+        { text: "Desarrollar pequeños scripts o desarmar aparatos electrónicos.", category: "tech" },
+        { text: "Debatir sobre temas sociales o leer libros de historia y sociedad.", category: "hum" },
+        { text: "Analizar noticias sobre empresas, finanzas o el mercado de valores.", category: "neg" },
+        { text: "Investigar cómo funciona el cuerpo humano o ayudar a personas enfermas.", category: "salud" }
+      ]
+    },
+    {
+      title: "Frente a un problema complejo, tu enfoque principal es:",
+      options: [
+        { text: "Diseñar una solución lógica, estructurada y basada en algoritmos.", category: "tech" },
+        { text: "Buscar comprender las posturas de las personas involucradas y mediar.", category: "hum" },
+        { text: "Evaluar los costos, beneficios y viabilidad económica de las soluciones.", category: "neg" },
+        { text: "Analizar los hechos biológicos y científicos con frialdad y empatía.", category: "salud" }
+      ]
+    },
+    {
+      title: "¿Cuál de estos temas capta más tu atención en documentales o artículos?",
+      options: [
+        { text: "El futuro de la Inteligencia Artificial y la Ciberseguridad.", category: "tech" },
+        { text: "Casos judiciales históricos o el origen de las leyes internacionales.", category: "hum" },
+        { text: "Cómo se crean startups innovadoras o la gestión de equipos comerciales.", category: "neg" },
+        { text: "Avances en vacunas genéticas y tratamientos médicos revolucionarios.", category: "salud" }
+      ]
+    },
+    {
+      title: "En un trabajo en grupo escolar o universitario, sueles encargarte de:",
+      options: [
+        { text: "Configurar las herramientas de colaboración, diagramar y optimizar recursos.", category: "tech" },
+        { text: "Redactar el marco teórico, debatir la defensa oral y fundamentar las ideas.", category: "hum" },
+        { text: "Organizar la agenda, asignar presupuestos y supervisar que se cumplan las metas.", category: "neg" },
+        { text: "Encargarte de la investigación científica exhaustiva y la validación empírica.", category: "salud" }
+      ]
+    },
+    {
+      title: "¿Qué entorno laboral ideal imaginas para tu futuro?",
+      options: [
+        { text: "Una empresa tecnológica moderna trabajando en desarrollo de software o datos.", category: "tech" },
+        { text: "Un estudio jurídico, una ONG, o una institución gubernamental de derechos.", category: "hum" },
+        { text: "Una oficina corporativa liderando proyectos de inversión o fundando mi propio negocio.", category: "neg" },
+        { text: "Un centro de salud, clínica o laboratorio de investigación biológica.", category: "salud" }
+      ]
+    },
+    {
+      title: "Si pudieras dominar una habilidad instantáneamente, elegirías:",
+      options: [
+        { text: "Programar en múltiples lenguajes complejos y modelar arquitecturas en la nube.", category: "tech" },
+        { text: "Argumentar y convencer con oratoria elocuente ante cualquier audiencia.", category: "hum" },
+        { text: "Negociar tratos de negocios y liderar expansiones corporativas de productos.", category: "neg" },
+        { text: "Diagnosticar con precisión enfermedades clínicas y aplicar tratamientos curativos.", category: "salud" }
+      ]
+    },
+    {
+      title: "¿Qué tipo de proyectos te entusiasma más desarrollar?",
+      options: [
+        { text: "Aplicaciones móviles útiles o sistemas inteligentes automatizados.", category: "tech" },
+        { text: "Campañas de ayuda comunitaria, reformas legales o defensa de derechos civiles.", category: "hum" },
+        { text: "Lanzamiento de un nuevo producto innovador al mercado nacional.", category: "neg" },
+        { text: "Campañas de prevención de salud pública o investigación celular médica.", category: "salud" }
+      ]
+    },
+    {
+      title: "¿Cuál de los siguientes valores define mejor tu norte profesional?",
+      options: [
+        { text: "Innovación, optimización y disrupción tecnológica.", category: "tech" },
+        { text: "Justicia social, ética, leyes y equidad.", category: "hum" },
+        { text: "Crecimiento económico, eficiencia, rentabilidad y liderazgo.", category: "neg" },
+        { text: "Bienestar humano, empatía médica y conservación de la vida.", category: "salud" }
+      ]
+    }
+  ];
+
+  // Career Recommendations Mapping
+  interface CareerRec {
+    title: string;
+    description: string;
+    path: string;
+  }
+
+  const profilesData: Record<string, { title: string; desc: string; careers: CareerRec[] }> = {
+    tech: {
+      title: "Ingeniería y Tecnología",
+      desc: "Eres una persona con gran pensamiento analítico, lógico y capacidad abstracta. Te apasiona la computación, el desarrollo de software, los datos y la automatización inteligente.",
+      careers: careersData.filter(c => c.category === 'tech').map(c => ({ title: c.title, description: c.description, path: "/#carreras" }))
+    },
+    hum: {
+      title: "Humanidades y Ciencias Sociales",
+      desc: "Destacas por tu oratoria, ética social y capacidad de análisis argumentativo. Te motivan los valores de justicia social, leyes, educación y la comunicación de ideas.",
+      careers: careersData.filter(c => c.category === 'hum').map(c => ({ title: c.title, description: c.description, path: "/#carreras" }))
+    },
+    neg: {
+      title: "Negocios y Liderazgo Corporativo",
+      desc: "Posees habilidades organizativas, visión estratégica de rentabilidad y liderazgo innato. Te entusiasma fundar empresas, gestionar finanzas o dirigir estrategias de mercado.",
+      careers: careersData.filter(c => c.category === 'neg').map(c => ({ title: c.title, description: c.description, path: "/#carreras" }))
+    },
+    salud: {
+      title: "Ciencias de la Salud y Bienestar",
+      desc: "Tu motivación principal es el bienestar biológico, la empatía y la salud de las personas. Destacas por tu vocación de servicio clínico, cuidado del paciente o investigación empírica.",
+      careers: careersData.filter(c => c.category === 'salud').map(c => ({ title: c.title, description: c.description, path: "/#carreras" }))
+    }
+  };
+
+  // State
+  let currentQuestionIndex = 0;
+  const userAnswers: string[] = [];
+
+  // DOM Elements
+  const welcomeScreen = document.getElementById('welcome-screen');
+  const questionScreen = document.getElementById('question-screen');
+  const resultScreen = document.getElementById('result-screen');
+  
+  const startBtn = document.getElementById('start-test-btn');
+  const backBtn = document.getElementById('back-btn') as HTMLButtonElement;
+  const retryBtn = document.getElementById('retry-btn');
+  
+  const questionNumber = document.getElementById('question-number');
+  const percentComplete = document.getElementById('percent-complete');
+  const progressBarFill = document.getElementById('progress-bar-fill');
+  const questionTitle = document.getElementById('question-title');
+  const optionsContainer = document.getElementById('options-container');
+
+  const resultProfile = document.getElementById('result-profile');
+  const resultDescription = document.getElementById('result-description');
+  const recommendedCareersList = document.getElementById('recommended-careers-list');
+
+  function renderQuestion() {
+    if (!questionScreen || !questionNumber || !percentComplete || !progressBarFill || !questionTitle || !optionsContainer) return;
+
+    const currentQuestion = questions[currentQuestionIndex];
+    
+    // Update labels
+    questionNumber.textContent = `Pregunta ${currentQuestionIndex + 1} de ${questions.length}`;
+    
+    const progressPercent = ((currentQuestionIndex + 1) / questions.length) * 100;
+    percentComplete.textContent = `${progressPercent}% Completado`;
+    progressBarFill.style.width = `${progressPercent}%`;
+    
+    // Update Question Title
+    questionTitle.textContent = currentQuestion.title;
+    
+    // Enable/Disable back button
+    if (backBtn) {
+      backBtn.disabled = currentQuestionIndex === 0;
+    }
+
+    // Render Options
+    optionsContainer.innerHTML = '';
+    currentQuestion.options.forEach((option, idx) => {
+      const button = document.createElement('button');
+      button.className = "w-full text-left px-6 py-4 rounded-2xl border-2 border-slate-200 hover:border-amber-500 hover:bg-amber-500/5 font-semibold text-slate-700 text-sm md:text-base transition-all duration-300 cursor-pointer flex justify-between items-center select-none group";
+      button.innerHTML = `
+        <span>${option.text}</span>
+        <span class="w-6 h-6 rounded-full border border-slate-300 flex items-center justify-center text-xs group-hover:border-amber-600 bg-slate-50 group-hover:bg-amber-600 group-hover:text-white transition-all"><i class="fa-solid fa-chevron-right text-[8px]"></i></span>
+      `;
+      
+      button.addEventListener('click', () => handleSelectAnswer(option.category));
+      optionsContainer.appendChild(button);
+    });
+  }
+
+  function handleSelectAnswer(category: string) {
+    userAnswers[currentQuestionIndex] = category;
+    
+    if (currentQuestionIndex < questions.length - 1) {
+      currentQuestionIndex++;
+      renderQuestion();
+    } else {
+      showResults();
+    }
+  }
+
+  function showResults() {
+    if (!questionScreen || !resultScreen || !resultProfile || !resultDescription || !recommendedCareersList) return;
+    
+    questionScreen.classList.add('hidden');
+    resultScreen.classList.remove('hidden');
+
+    // Calculate dominant category
+    const counts: Record<string, number> = { tech: 0, hum: 0, neg: 0, salud: 0 };
+    userAnswers.forEach(ans => {
+      counts[ans] = (counts[ans] || 0) + 1;
+    });
+
+    // Find the category with maximum score
+    let dominantCategory = 'tech';
+    let maxScore = -1;
+    
+    Object.keys(counts).forEach(cat => {
+      if (counts[cat] > maxScore) {
+        maxScore = counts[cat];
+        dominantCategory = cat;
+      }
+    });
+
+    // Get dominant profile data
+    const profile = profilesData[dominantCategory] || profilesData.tech;
+
+    // Populate profile DOM
+    resultProfile.textContent = profile.title;
+    resultDescription.textContent = profile.desc;
+
+    // Populate Careers Suggestions list
+    recommendedCareersList.innerHTML = '';
+    profile.careers.forEach(c => {
+      const div = document.createElement('div');
+      div.className = "bg-white/5 border border-white/10 p-4 rounded-2xl flex flex-col md:flex-row justify-between items-start md:items-center gap-4 hover:bg-white/10 transition-colors";
+      div.innerHTML = `
+        <div>
+          <h5 class="font-bold text-amber-400 text-sm md:text-base">${c.title}</h5>
+          <p class="text-xs text-slate-400 mt-1">${c.description}</p>
+        </div>
+        <a href="${c.path}" class="bg-amber-600 hover:bg-amber-700 text-white font-extrabold text-[10px] uppercase px-4 py-2 rounded-full tracking-wider transition-colors inline-block whitespace-nowrap self-end md:self-auto">
+          Ver Malla Curricular
+        </a>
+      `;
+      recommendedCareersList.appendChild(div);
+    });
+  }
+
+  // Bind Start Button
+  if (startBtn && welcomeScreen && questionScreen) {
+    startBtn.addEventListener('click', () => {
+      welcomeScreen.classList.add('hidden');
+      questionScreen.classList.remove('hidden');
+      currentQuestionIndex = 0;
+      userAnswers.length = 0;
+      renderQuestion();
+    });
+  }
+
+  // Bind Back Button
+  if (backBtn) {
+    backBtn.addEventListener('click', () => {
+      if (currentQuestionIndex > 0) {
+        currentQuestionIndex--;
+        renderQuestion();
+      }
+    });
+  }
+
+  // Bind Retry Button
+  if (retryBtn && welcomeScreen && resultScreen) {
+    retryBtn.addEventListener('click', () => {
+      resultScreen.classList.add('hidden');
+      welcomeScreen.classList.remove('hidden');
+      currentQuestionIndex = 0;
+      userAnswers.length = 0;
+    });
+  }
+</script>

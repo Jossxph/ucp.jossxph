@@ -1,0 +1,72 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="Política de Privacidad | Universidad Carrión Porras" description="Infórmate sobre las políticas de seguridad y protección de datos personales aplicadas en la Universidad Carrión Porras.">
+  <Header />
+  
+  <main class="bg-slate-50 min-h-screen">
+    <!-- Banner Header -->
+    <section class="relative bg-slate-900 text-white py-24 overflow-hidden">
+      <div class="absolute inset-0 opacity-20 bg-[linear-gradient(to_right,#334155_1px,transparent_1px),linear-gradient(to_bottom,#334155_1px,transparent_1px)] bg-[size:4rem_4rem]"></div>
+      <div class="max-w-4xl mx-auto px-4 text-center relative z-10">
+        <span class="text-amber-500 font-bold text-xs uppercase tracking-widest bg-amber-500/10 px-4 py-1.5 rounded-full inline-block mb-4">
+          Protección de Datos
+        </span>
+        <h1 class="text-4xl md:text-5xl font-black mb-6 tracking-tight">Política de Privacidad</h1>
+        <p class="text-slate-350 text-lg leading-relaxed max-w-2xl mx-auto">
+          Nos tomamos muy en serio la seguridad de tu información personal. Conoce las directrices de privacidad y tratamiento de datos de la UCP 2027.
+        </p>
+      </div>
+    </section>
+
+    <!-- Content -->
+    <section class="py-24 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="bg-white p-8 md:p-12 rounded-3xl border border-slate-200/60 shadow-lg space-y-8 text-sm text-slate-650 leading-relaxed">
+        
+        <div>
+          <h2 class="text-xl font-bold text-slate-950 mb-3">1. Recopilación de Información</h2>
+          <p>
+            Recopilamos información personal a través de nuestros formularios oficiales de admisión, boletín de suscripción y formularios de contacto. Esta información incluye nombres, direcciones de correo electrónico, teléfonos de contacto e intereses académicos.
+          </p>
+        </div>
+
+        <div>
+          <h2 class="text-xl font-bold text-slate-950 mb-3">2. Uso de la Información</h2>
+          <p>
+            Los datos proporcionados son tratados con el único fin de:
+          </p>
+          <ul class="list-disc pl-5 mt-2 space-y-1.5">
+            <li>Enviar información solicitada sobre el proceso de admisión 2027.</li>
+            <li>Gestionar el registro e inscripción académica de los postulantes y alumnos.</li>
+            <li>Enviar boletines y noticias de actualidad universitaria (solo si el usuario lo autoriza).</li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 class="text-xl font-bold text-slate-950 mb-3">3. Derechos de los Usuarios (Derechos ARCO)</h2>
+          <p>
+            De conformidad con la Ley de Protección de Datos Personales, usted tiene derecho a Acceder, Rectificar, Cancelar u Oponerse (Derechos ARCO) al uso de su información personal en nuestras bases de datos. Para ejercer estos derechos, puede escribirnos al correo: privacidad@ucp.edu.pe.
+          </p>
+        </div>
+
+        <div>
+          <h2 class="text-xl font-bold text-slate-950 mb-3">4. Seguridad y Confidencialidad</h2>
+          <p>
+            La universidad cuenta con medidas de seguridad técnicas y organizativas para evitar la pérdida, mal uso, alteración o acceso no autorizado a los datos recopilados en sus plataformas. No vendemos ni compartimos sus datos con terceros comerciales sin consentimiento expreso.
+          </p>
+        </div>
+
+        <div class="pt-6 border-t border-slate-100 flex justify-between items-center text-xs text-slate-400">
+          <span>Última actualización: Junio de 2027</span>
+          <span>Oficina de Sistemas y Ciberseguridad UCP</span>
+        </div>
+
+      </div>
+    </section>
+  </main>
+  
+  <Footer />
+</Layout>

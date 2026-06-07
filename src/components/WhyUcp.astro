@@ -1,0 +1,68 @@
+---
+/**
+ * WhyUcp — "Why choose UCP" section with feature grid.
+ * Highlights key differentiators of the university.
+ */
+import SectionHeader from './SectionHeader.astro';
+
+const features = [
+  {
+    icon: 'fa-shield-halved',
+    title: 'Licenciada por SUNEDU',
+    desc: 'Calidad educativa certificada por la máxima autoridad reguladora del Perú.',
+  },
+  {
+    icon: 'fa-chalkboard-user',
+    title: 'Docentes de Primer Nivel',
+    desc: 'Profesores con maestrías y doctorados en universidades de prestigio mundial.',
+  },
+  {
+    icon: 'fa-laptop-code',
+    title: 'Tecnología de Vanguardia',
+    desc: 'Laboratorios equipados con la última tecnología y plataformas digitales modernas.',
+  },
+  {
+    icon: 'fa-earth-americas',
+    title: 'Convenios Internacionales',
+    desc: 'Intercambio estudiantil con universidades de América, Europa y Asia.',
+  },
+  {
+    icon: 'fa-briefcase',
+    title: '95% Empleabilidad',
+    desc: 'Nuestros egresados son altamente demandados por las mejores empresas del país.',
+  },
+  {
+    icon: 'fa-hand-holding-heart',
+    title: 'Becas y Financiamiento',
+    desc: 'Programas de becas por excelencia, deporte y necesidad socioeconómica.',
+  },
+];
+---
+
+<section class="section-padding bg-white relative overflow-hidden">
+  <!-- Decorative -->
+  <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-amber-50 rounded-full filter blur-[140px] opacity-60 pointer-events-none"></div>
+
+  <div class="container-max relative">
+
+    <SectionHeader
+      badge="Nuestra Diferencia"
+      title="¿Por qué elegir la UCP?"
+      description="Descubre las razones por las que miles de estudiantes confían en nosotros para construir su futuro profesional."
+    />
+
+    <!-- Features Grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {features.map(feature => (
+        <div class="group p-7 rounded-2xl border border-slate-200/60 bg-slate-50/50 hover:bg-white hover:shadow-lg hover:border-slate-200 transition-all duration-300">
+          <div class="icon-box-light mb-5 group-hover:bg-amber-600 group-hover:text-white">
+            <i class={`fa-solid ${feature.icon} text-xl`}></i>
+          </div>
+          <h3 class="text-base font-bold text-slate-900 mb-2">{feature.title}</h3>
+          <p class="text-sm text-slate-500 leading-relaxed">{feature.desc}</p>
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>

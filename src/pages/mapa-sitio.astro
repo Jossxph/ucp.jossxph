@@ -1,0 +1,104 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="Mapa del Sitio | Universidad Carrión Porras" description="Accede al listado y mapa estructurado de todas las secciones, páginas académicas e informativas del portal UCP 2027.">
+  <Header />
+  
+  <main class="bg-slate-50 min-h-screen">
+    <!-- Banner Header -->
+    <section class="relative bg-slate-900 text-white py-24 overflow-hidden">
+      <div class="absolute inset-0 opacity-20 bg-[linear-gradient(to_right,#334155_1px,transparent_1px),linear-gradient(to_bottom,#334155_1px,transparent_1px)] bg-[size:4rem_4rem]"></div>
+      <div class="max-w-4xl mx-auto px-4 text-center relative z-10">
+        <span class="text-amber-500 font-bold text-xs uppercase tracking-widest bg-amber-500/10 px-4 py-1.5 rounded-full inline-block mb-4">
+          Navegación Completa
+        </span>
+        <h1 class="text-4xl md:text-5xl font-black mb-6 tracking-tight">Mapa del Sitio</h1>
+        <p class="text-slate-350 text-lg leading-relaxed max-w-2xl mx-auto">
+          Accede de forma rápida y sencilla a cualquier pabellón digital de nuestro portal institucional UCP 2027.
+        </p>
+      </div>
+    </section>
+
+    <!-- Site Map Grid -->
+    <section class="py-24 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        
+        <!-- Group 1: Inicio -->
+        <div class="bg-white p-8 rounded-3xl border border-slate-200/50 shadow-sm">
+          <h2 class="text-lg font-extrabold text-slate-950 mb-4 pb-2 border-b border-slate-100 flex items-center gap-2">
+            <i class="fa-solid fa-house text-amber-600"></i> Portal Principal
+          </h2>
+          <ul class="space-y-3 text-sm font-semibold">
+            <li><a href="/" class="text-slate-600 hover:text-amber-600 transition-colors flex items-center gap-1.5"><i class="fa-solid fa-angle-right text-xs"></i> Página de Inicio</a></li>
+            <li><a href="/#admision" class="text-slate-600 hover:text-amber-600 transition-colors flex items-center gap-1.5"><i class="fa-solid fa-angle-right text-xs"></i> Convocatoria de Admisión</a></li>
+            <li><a href="/#carreras" class="text-slate-600 hover:text-amber-600 transition-colors flex items-center gap-1.5"><i class="fa-solid fa-angle-right text-xs"></i> Carreras Destacadas</a></li>
+          </ul>
+        </div>
+
+        <!-- Group 2: Sobre Nosotros -->
+        <div class="bg-white p-8 rounded-3xl border border-slate-200/50 shadow-sm">
+          <h2 class="text-lg font-extrabold text-slate-950 mb-4 pb-2 border-b border-slate-100 flex items-center gap-2">
+            <i class="fa-solid fa-institution text-amber-600"></i> Sobre Nosotros
+          </h2>
+          <ul class="space-y-3 text-sm font-semibold">
+            <li><a href="/historia" class="text-slate-600 hover:text-amber-600 transition-colors flex items-center gap-1.5"><i class="fa-solid fa-angle-right text-xs"></i> Historia Institucional</a></li>
+            <li><a href="/mision-vision" class="text-slate-600 hover:text-amber-600 transition-colors flex items-center gap-1.5"><i class="fa-solid fa-angle-right text-xs"></i> Misión, Visión y Valores</a></li>
+            <li><a href="/acreditacion" class="text-slate-600 hover:text-amber-600 transition-colors flex items-center gap-1.5"><i class="fa-solid fa-angle-right text-xs"></i> Acreditaciones de Calidad</a></li>
+          </ul>
+        </div>
+
+        <!-- Group 3: Académico -->
+        <div class="bg-white p-8 rounded-3xl border border-slate-200/50 shadow-sm">
+          <h2 class="text-lg font-extrabold text-slate-950 mb-4 pb-2 border-b border-slate-100 flex items-center gap-2">
+            <i class="fa-solid fa-graduation-cap text-amber-600"></i> Oferta Académica
+          </h2>
+          <ul class="space-y-3 text-sm font-semibold">
+            <li><a href="/#carreras" class="text-slate-600 hover:text-amber-600 transition-colors flex items-center gap-1.5"><i class="fa-solid fa-angle-right text-xs"></i> Carreras de Pregrado</a></li>
+            <li><a href="/posgrado" class="text-slate-600 hover:text-amber-600 transition-colors flex items-center gap-1.5"><i class="fa-solid fa-angle-right text-xs"></i> Programas de Posgrado</a></li>
+            <li><a href="/educacion-continua" class="text-slate-600 hover:text-amber-600 transition-colors flex items-center gap-1.5"><i class="fa-solid fa-angle-right text-xs"></i> Educación Continua</a></li>
+          </ul>
+        </div>
+
+        <!-- Group 4: Admisión y Becas -->
+        <div class="bg-white p-8 rounded-3xl border border-slate-200/50 shadow-sm">
+          <h2 class="text-lg font-extrabold text-slate-950 mb-4 pb-2 border-b border-slate-100 flex items-center gap-2">
+            <i class="fa-solid fa-file-invoice-dollar text-amber-600"></i> Admisión y Ayuda
+          </h2>
+          <ul class="space-y-3 text-sm font-semibold">
+            <li><a href="/#admision" class="text-slate-600 hover:text-amber-600 transition-colors flex items-center gap-1.5"><i class="fa-solid fa-angle-right text-xs"></i> Proceso de Inscripción</a></li>
+            <li><a href="/becas" class="text-slate-600 hover:text-amber-600 transition-colors flex items-center gap-1.5"><i class="fa-solid fa-angle-right text-xs"></i> Becas y Financiamiento</a></li>
+            <li><a href="/contacto" class="text-slate-600 hover:text-amber-600 transition-colors flex items-center gap-1.5"><i class="fa-solid fa-angle-right text-xs"></i> Contacto y Asesoría</a></li>
+          </ul>
+        </div>
+
+        <!-- Group 5: Estudiantes -->
+        <div class="bg-white p-8 rounded-3xl border border-slate-200/50 shadow-sm">
+          <h2 class="text-lg font-extrabold text-slate-950 mb-4 pb-2 border-b border-slate-100 flex items-center gap-2">
+            <i class="fa-solid fa-users text-amber-600"></i> Vida y Carrera
+          </h2>
+          <ul class="space-y-3 text-sm font-semibold">
+            <li><a href="/vida-universitaria" class="text-slate-600 hover:text-amber-600 transition-colors flex items-center gap-1.5"><i class="fa-solid fa-angle-right text-xs"></i> Vida Universitaria</a></li>
+            <li><a href="/bolsa-trabajo" class="text-slate-600 hover:text-amber-600 transition-colors flex items-center gap-1.5"><i class="fa-solid fa-angle-right text-xs"></i> Bolsa de Trabajo</a></li>
+          </ul>
+        </div>
+
+        <!-- Group 6: Legal -->
+        <div class="bg-white p-8 rounded-3xl border border-slate-200/50 shadow-sm">
+          <h2 class="text-lg font-extrabold text-slate-950 mb-4 pb-2 border-b border-slate-100 flex items-center gap-2">
+            <i class="fa-solid fa-shield text-amber-600"></i> Aspectos Legales
+          </h2>
+          <ul class="space-y-3 text-sm font-semibold">
+            <li><a href="/terminos" class="text-slate-600 hover:text-amber-600 transition-colors flex items-center gap-1.5"><i class="fa-solid fa-angle-right text-xs"></i> Términos y Condiciones</a></li>
+            <li><a href="/privacidad" class="text-slate-600 hover:text-amber-600 transition-colors flex items-center gap-1.5"><i class="fa-solid fa-angle-right text-xs"></i> Política de Privacidad</a></li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+  </main>
+  
+  <Footer />
+</Layout>

@@ -1,0 +1,84 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="Bolsa de Trabajo | Universidad Carrión Porras" description="Accede a convenios de prácticas pre-profesionales, bolsa de empleo exclusiva y asesoría de empleabilidad para alumnos y egresados de la UCP.">
+  <Header />
+  
+  <main class="bg-slate-50 min-h-screen">
+    <!-- Banner Header -->
+    <section class="relative bg-slate-900 text-white py-24 overflow-hidden">
+      <div class="absolute inset-0 opacity-20 bg-[linear-gradient(to_right,#334155_1px,transparent_1px),linear-gradient(to_bottom,#334155_1px,transparent_1px)] bg-[size:4rem_4rem]"></div>
+      <div class="max-w-4xl mx-auto px-4 text-center relative z-10">
+        <span class="text-amber-500 font-bold text-xs uppercase tracking-widest bg-amber-500/10 px-4 py-1.5 rounded-full inline-block mb-4">
+          Conexión Empresarial
+        </span>
+        <h1 class="text-4xl md:text-5xl font-black mb-6 tracking-tight">Bolsa de Trabajo</h1>
+        <p class="text-slate-350 text-lg leading-relaxed max-w-2xl mx-auto">
+          Impulsamos tu inserción laboral rápida. Conectamos tu talento con las empresas líderes de cada sector a través de convenios de prácticas y empleo permanente.
+        </p>
+      </div>
+    </section>
+
+    <!-- Content -->
+    <section class="py-24 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid md:grid-cols-2 gap-10">
+        
+        <!-- Career guidance -->
+        <div class="bg-white p-8 rounded-3xl border border-slate-200/50 shadow-md">
+          <div class="w-12 h-12 bg-amber-50 rounded-2xl flex items-center justify-center text-amber-600 mb-6">
+            <i class="fa-solid fa-file-invoice text-xl"></i>
+          </div>
+          <h2 class="text-2xl font-bold text-slate-950 mb-4">Servicios de Empleabilidad</h2>
+          <p class="text-slate-600 text-sm leading-relaxed mb-6">
+            Te asesoramos para que tu postulación tenga éxito. Ofrecemos talleres constantes durante todo el año académico:
+          </p>
+          <ul class="space-y-3.5 text-sm text-slate-650">
+            <li class="flex items-center gap-2.5">
+              <i class="fa-solid fa-check text-emerald-500 text-base"></i>
+              <span>Elaboración de currículum vitae de alto impacto</span>
+            </li>
+            <li class="flex items-center gap-2.5">
+              <i class="fa-solid fa-check text-emerald-500 text-base"></i>
+              <span>Simulación de entrevistas y dinámicas grupales</span>
+            </li>
+            <li class="flex items-center gap-2.5">
+              <i class="fa-solid fa-check text-emerald-500 text-base"></i>
+              <span>Talleres de LinkedIn y marca personal directiva</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Corporate Alliances -->
+        <div class="bg-white p-8 rounded-3xl border border-slate-200/50 shadow-md">
+          <div class="w-12 h-12 bg-amber-50 rounded-2xl flex items-center justify-center text-amber-600 mb-6">
+            <i class="fa-solid fa-building text-xl"></i>
+          </div>
+          <h2 class="text-2xl font-bold text-slate-950 mb-4">Convenios Corporativos</h2>
+          <p class="text-slate-600 text-sm leading-relaxed mb-6">
+            Nuestros convenios corporativos facilitan que realices tus prácticas pre-profesionales y logres tu primera contratación en corporaciones de prestigio:
+          </p>
+          <ul class="space-y-3.5 text-sm text-slate-650">
+            <li class="flex items-center gap-2.5">
+              <i class="fa-solid fa-arrow-right-long text-amber-500"></i>
+              <span>Convenios en Banca y Finanzas locales</span>
+            </li>
+            <li class="flex items-center gap-2.5">
+              <i class="fa-solid fa-arrow-right-long text-amber-500"></i>
+              <span>Alianzas con empresas de desarrollo de software globales</span>
+            </li>
+            <li class="flex items-center gap-2.5">
+              <i class="fa-solid fa-arrow-right-long text-amber-500"></i>
+              <span>Convenios de consultoría con estudios de abogados líderes</span>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+  </main>
+  
+  <Footer />
+</Layout>

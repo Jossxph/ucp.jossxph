@@ -1,0 +1,307 @@
+---
+/**
+ * Careers — Academic programs grid with category filters, career cards, and curriculum modal.
+ * Uses data from carreras.ts for dynamic rendering.
+ */
+import { Image } from 'astro:assets';
+import SectionHeader from './SectionHeader.astro';
+import sistemasImg from '../assets/images/sistemas.jpg';
+import adminImg from '../assets/images/admin.jpg';
+import derechoImg from '../assets/images/derecho.jpg';
+import { careersData } from '../data/carreras';
+
+// Category icon mapping for careers without photos
+const categoryIcons: Record<string, Record<string, string>> = {
+  salud: {
+    medicina: 'fa-user-doctor',
+    odontologia: 'fa-tooth',
+    psicologia: 'fa-brain',
+    enfermeria: 'fa-hand-holding-heart',
+    nutricion: 'fa-apple-whole',
+  },
+};
+
+// Image mapping for categories with photos
+const careerImages: Record<string, ImageMetadata> = {
+  tech: sistemasImg,
+  neg: adminImg,
+  hum: derechoImg,
+};
+
+// Category filter config
+const filters = [
+  { key: 'all', label: 'Todas', icon: 'fa-layer-group' },
+  { key: 'tech', label: 'Ingeniería', icon: 'fa-microchip' },
+  { key: 'salud', label: 'Salud', icon: 'fa-heartbeat' },
+  { key: 'hum', label: 'Humanidades', icon: 'fa-scale-balanced' },
+  { key: 'neg', label: 'Negocios', icon: 'fa-chart-line' },
+];
+---
+
+<section id="carreras" class="section-padding bg-slate-100/80">
+  <div class="container-max">
+
+    <SectionHeader
+      badge="Oferta Académica 2027"
+      title="Nuestras Carreras Profesionales"
+      description="Descubre tu vocación con nuestros planes de estudio actualizados, diseñados bajo estándares de calidad internacional."
+    />
+
+    <!-- Category Filters -->
+    <div class="flex flex-wrap justify-center gap-2.5 mb-14">
+      {filters.map((f, i) => (
+        <button
+          data-filter={f.key}
+          class={`filter-btn flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 cursor-pointer ${
+            i === 0
+              ? 'bg-navy-900 text-white shadow-lg'
+              : 'bg-white text-slate-600 hover:text-slate-900 border border-slate-200/80 hover:border-slate-300'
+          }`}
+        >
+          <i class={`fa-solid ${f.icon} text-xs`}></i>
+          {f.label}
+          {f.key === 'all' && (
+            <span class="text-[10px] bg-white/20 px-1.5 py-0.5 rounded-full font-bold">{careersData.length}</span>
+          )}
+        </button>
+      ))}
+    </div>
+
+    <!-- Careers Grid -->
+    <div id="careers-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7 mb-16">
+      {careersData.map(career => (
+        <div
+          data-category={career.category}
+          class="career-card group bg-white rounded-2xl border border-slate-200/60 shadow-sm hover:shadow-xl transition-all duration-400 overflow-hidden flex flex-col"
+        >
+          <!-- Image / Icon Banner -->
+          <div class="relative overflow-hidden aspect-[16/9]">
+            {career.category === 'salud' ? (
+              <div class="w-full h-full bg-gradient-to-br from-navy-800 to-navy-950 flex items-center justify-center">
+                <i class={`fa-solid ${categoryIcons.salud[career.key] || 'fa-stethoscope'} text-4xl text-gold-400/60`}></i>
+              </div>
+            ) : (
+              <Image
+                src={careerImages[career.category] || sistemasImg}
+                alt={career.title}
+                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                width={400}
+                height={225}
+              />
+            )}
+
+            <!-- Duration badge -->
+            <div class="absolute top-3 right-3 bg-navy-950/85 backdrop-blur-sm text-white font-bold text-xs px-3 py-1.5 rounded-lg flex items-center gap-1.5">
+              <i class="fa-regular fa-clock text-gold-400 text-[10px]"></i>
+              {career.years} Años
+            </div>
+
+            <!-- Category label -->
+            <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent pt-8 pb-3 px-4">
+              <span class="text-[10px] text-white/80 uppercase tracking-wider font-bold">{career.categoryLabel}</span>
+            </div>
+          </div>
+
+          <!-- Card Body -->
+          <div class="p-6 flex-1 flex flex-col justify-between">
+            <div>
+              <h3 class="text-lg font-bold text-slate-900 mb-2 group-hover:text-amber-600 transition-colors leading-snug">
+                {career.title}
+              </h3>
+              <p class="text-slate-500 text-sm mb-5 leading-relaxed line-clamp-2">
+                {career.description}
+              </p>
+            </div>
+
+            <div>
+              <!-- Tags -->
+              <div class="flex flex-wrap gap-1.5 mb-5">
+                {career.tags.map(tag => (
+                  <span class="bg-amber-500/8 text-amber-700 text-[11px] px-2.5 py-1 rounded-lg font-semibold">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+
+              <button
+                data-career-key={career.key}
+                class="view-curriculum-btn inline-flex items-center gap-2 text-amber-600 font-bold hover:text-amber-700 text-sm group/btn cursor-pointer"
+              >
+                <span class="w-7 h-7 rounded-lg bg-amber-50 flex items-center justify-center group-hover/btn:bg-amber-600 group-hover/btn:text-white transition-all">
+                  <i class="fas fa-book-open text-[10px]"></i>
+                </span>
+                Ver plan de estudios
+                <i class="fas fa-arrow-right text-xs group-hover/btn:translate-x-1.5 transition-transform duration-300"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- No results -->
+    <div id="no-results" class="hidden text-center py-14">
+      <div class="w-16 h-16 rounded-2xl bg-slate-100 flex items-center justify-center mx-auto mb-4">
+        <i class="fa-solid fa-graduation-cap text-2xl text-slate-300"></i>
+      </div>
+      <h3 class="text-lg font-bold text-slate-700 mb-2">Próximamente más carreras</h3>
+      <p class="text-sm text-slate-400">Estamos diseñando nuevos programas académicos para ti.</p>
+    </div>
+
+    <!-- CTA: Test Vocacional -->
+    <div class="bg-white border border-slate-200/60 rounded-3xl p-8 md:p-10 shadow-md flex flex-col md:flex-row items-center justify-between gap-6">
+      <div class="flex items-center gap-4">
+        <div class="w-14 h-14 rounded-2xl bg-navy-900 flex items-center justify-center flex-shrink-0">
+          <i class="fa-solid fa-compass text-gold-400 text-xl"></i>
+        </div>
+        <div>
+          <h3 class="text-xl font-bold text-slate-900 mb-1">¿Quieres orientación vocacional?</h3>
+          <p class="text-slate-500 text-sm">Realiza nuestro test gratuito y conversa con un asesor académico.</p>
+        </div>
+      </div>
+      <a href="/test-vocacional" class="btn-dark flex-shrink-0">
+        <i class="fas fa-graduation-cap text-gold-400"></i>
+        <span>Iniciar Test Vocacional</span>
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════ Plan de Estudios Modal ═══════════════════ -->
+<div id="curriculum-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-navy-950/70 backdrop-blur-sm hidden opacity-0 transition-all duration-300">
+  <div class="bg-white rounded-3xl border border-slate-200/60 shadow-2xl max-w-2xl w-full mx-4 overflow-hidden scale-95 transition-all duration-300 flex flex-col max-h-[85vh]" id="curriculum-modal-box">
+    <!-- Header -->
+    <div class="bg-gradient-to-r from-navy-900 to-navy-950 text-white px-6 py-5 flex justify-between items-center">
+      <div>
+        <span class="text-gold-400 text-[10px] font-bold uppercase tracking-widest flex items-center gap-1.5">
+          <i class="fa-solid fa-book-open text-[9px]"></i> Plan de Estudios Oficial
+        </span>
+        <h3 id="modal-career-title" class="text-lg md:text-xl font-bold mt-1">Carrera Universitaria</h3>
+      </div>
+      <button id="close-curriculum-btn" class="w-9 h-9 rounded-xl bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-colors cursor-pointer">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+
+    <!-- Body -->
+    <div class="p-6 md:p-8 overflow-y-auto space-y-4 flex-1 bg-slate-50" id="modal-curriculum-body"></div>
+
+    <!-- Footer -->
+    <div class="px-6 py-4 bg-white border-t border-slate-100 flex justify-between items-center text-xs">
+      <span class="text-slate-400 font-semibold flex items-center gap-1.5">
+        <i class="fa-solid fa-shield-halved text-gold-500"></i> UCP — Excelencia Académica
+      </span>
+      <a href="/contacto" class="btn-primary text-xs py-2 px-5">
+        Solicitar Información
+      </a>
+    </div>
+  </div>
+</div>
+
+<script>
+  import { careersData } from '../data/carreras';
+
+  // ── Filter Logic ──
+  const filterButtons = document.querySelectorAll('.filter-btn');
+  const careerCards = document.querySelectorAll('.career-card');
+  const noResults = document.getElementById('no-results');
+
+  filterButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const filter = btn.getAttribute('data-filter');
+
+      filterButtons.forEach(b => {
+        b.classList.remove('bg-navy-900', 'text-white', 'shadow-lg');
+        b.classList.add('bg-white', 'text-slate-600', 'border', 'border-slate-200/80');
+      });
+
+      btn.classList.add('bg-navy-900', 'text-white', 'shadow-lg');
+      btn.classList.remove('bg-white', 'text-slate-600', 'border', 'border-slate-200/80');
+
+      let visibleCount = 0;
+      careerCards.forEach((card, index) => {
+        const category = card.getAttribute('data-category');
+        const htmlCard = card as HTMLElement;
+        if (filter === 'all' || category === filter) {
+          htmlCard.style.display = 'flex';
+          htmlCard.style.opacity = '0';
+          htmlCard.style.transform = 'translateY(12px)';
+          setTimeout(() => {
+            htmlCard.style.opacity = '1';
+            htmlCard.style.transform = 'translateY(0)';
+          }, index * 50);
+          visibleCount++;
+        } else {
+          htmlCard.style.display = 'none';
+        }
+      });
+
+      if (noResults) {
+        noResults.classList.toggle('hidden', visibleCount > 0);
+      }
+    });
+  });
+
+  // ── Modal Logic ──
+  const modal = document.getElementById('curriculum-modal');
+  const modalBox = document.getElementById('curriculum-modal-box');
+  const closeBtn = document.getElementById('close-curriculum-btn');
+  const modalTitle = document.getElementById('modal-career-title');
+  const modalBody = document.getElementById('modal-curriculum-body');
+
+  function openModal(key: string) {
+    if (!modal || !modalBox || !modalTitle || !modalBody) return;
+    const data = careersData.find(c => c.key === key);
+    if (!data) return;
+
+    modalTitle.textContent = data.title;
+
+    let bodyHtml = '';
+    Object.keys(data.semesters).forEach(semesterName => {
+      const courses = data.semesters[semesterName];
+      bodyHtml += `
+        <div class="bg-white p-5 rounded-2xl border border-slate-200/60 shadow-sm">
+          <h4 class="font-bold text-amber-600 text-sm border-b border-slate-100 pb-2 mb-3 flex items-center gap-2">
+            <i class="fa-solid fa-graduation-cap text-xs"></i> ${semesterName}
+          </h4>
+          <ul class="space-y-2 text-xs md:text-sm text-slate-600">
+            ${courses.map(course => `<li class="flex items-center gap-2.5"><i class="fa-solid fa-circle-check text-emerald-500 text-[10px]"></i> <span>${course}</span></li>`).join('')}
+          </ul>
+        </div>
+      `;
+    });
+
+    modalBody.innerHTML = `<div class="grid sm:grid-cols-2 gap-4">${bodyHtml}</div>`;
+
+    modal.classList.remove('hidden');
+    setTimeout(() => {
+      modal.classList.replace('opacity-0', 'opacity-100');
+      modalBox.classList.replace('scale-95', 'scale-100');
+    }, 20);
+  }
+
+  function closeModal() {
+    if (!modal || !modalBox) return;
+    modal.classList.replace('opacity-100', 'opacity-0');
+    modalBox.classList.replace('scale-100', 'scale-95');
+    setTimeout(() => modal.classList.add('hidden'), 300);
+  }
+
+  document.querySelectorAll('.view-curriculum-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      openModal(btn.getAttribute('data-career-key') || '');
+    });
+  });
+
+  closeBtn?.addEventListener('click', closeModal);
+  modal?.addEventListener('click', (e) => {
+    if (e.target === modal) closeModal();
+  });
+</script>
+
+<style>
+  .career-card {
+    transition: opacity 0.4s ease, transform 0.4s ease, box-shadow 0.3s ease;
+  }
+</style>

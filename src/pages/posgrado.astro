@@ -1,0 +1,93 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="Programas de Posgrado | Universidad Carrión Porras" description="Explora nuestras maestrías y diplomados de especialización para potenciar tu perfil directivo y profesional en la UCP.">
+  <Header />
+  
+  <main class="bg-slate-50 min-h-screen">
+    <!-- Banner Header -->
+    <section class="relative bg-slate-900 text-white py-24 overflow-hidden">
+      <div class="absolute inset-0 opacity-20 bg-[linear-gradient(to_right,#334155_1px,transparent_1px),linear-gradient(to_bottom,#334155_1px,transparent_1px)] bg-[size:4rem_4rem]"></div>
+      <div class="max-w-4xl mx-auto px-4 text-center relative z-10">
+        <span class="text-amber-500 font-bold text-xs uppercase tracking-widest bg-amber-500/10 px-4 py-1.5 rounded-full inline-block mb-4">
+          Especialización Directiva
+        </span>
+        <h1 class="text-4xl md:text-5xl font-black mb-6 tracking-tight">Escuela de Posgrado 2027</h1>
+        <p class="text-slate-350 text-lg leading-relaxed max-w-2xl mx-auto">
+          Programas de maestría de alto nivel diseñados para potenciar el liderazgo corporativo, la innovación y la toma de decisiones estratégicas.
+        </p>
+      </div>
+    </section>
+
+    <!-- Master's List -->
+    <section class="py-24 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid md:grid-cols-2 gap-10">
+        
+        <!-- MBA -->
+        <div class="bg-white p-8 rounded-3xl border border-slate-200/50 shadow-md hover:shadow-xl transition-shadow flex flex-col justify-between group">
+          <div>
+            <div class="flex items-center justify-between mb-6">
+              <span class="bg-amber-500/10 text-amber-700 text-xs px-3 py-1 rounded-full font-bold uppercase tracking-wider">Maestría</span>
+              <span class="text-slate-400 text-xs font-semibold"><i class="fa-solid fa-clock"></i> 2 Años</span>
+            </div>
+            <h3 class="text-2xl font-bold text-slate-950 mb-3 group-hover:text-amber-600 transition-colors">Maestría en Administración de Empresas (MBA)</h3>
+            <p class="text-slate-600 text-sm mb-6 leading-relaxed">
+              Desarrolla visión global e inteligencia de negocios. Enfocado en metodologías ágiles de gestión, finanzas corporativas internacionales, dirección comercial y marketing digital.
+            </p>
+          </div>
+          <div class="pt-6 border-t border-slate-50 flex items-center justify-between">
+            <span class="text-xs text-slate-550">Clases los fines de semana</span>
+            <a href="/contacto" class="text-amber-600 font-bold hover:text-amber-700 text-sm flex items-center gap-1">
+              Más información <i class="fas fa-arrow-right text-xs"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Maestria en TI -->
+        <div class="bg-white p-8 rounded-3xl border border-slate-200/50 shadow-md hover:shadow-xl transition-shadow flex flex-col justify-between group">
+          <div>
+            <div class="flex items-center justify-between mb-6">
+              <span class="bg-amber-500/10 text-amber-700 text-xs px-3 py-1 rounded-full font-bold uppercase tracking-wider">Maestría</span>
+              <span class="text-slate-400 text-xs font-semibold"><i class="fa-solid fa-clock"></i> 2 Años</span>
+            </div>
+            <h3 class="text-2xl font-bold text-slate-950 mb-3 group-hover:text-amber-600 transition-colors">Maestría en Tecnología de la Información</h3>
+            <p class="text-slate-600 text-sm mb-6 leading-relaxed">
+              Especialización avanzada en arquitectura de software, gestión de big data, gobernanza de TI, ciberseguridad corporativa e integración estratégica de Inteligencia Artificial.
+            </p>
+          </div>
+          <div class="pt-6 border-t border-slate-50 flex items-center justify-between">
+            <span class="text-xs text-slate-550">Modalidad Semipresencial</span>
+            <a href="/contacto" class="text-amber-600 font-bold hover:text-amber-700 text-sm flex items-center gap-1">
+              Más información <i class="fas fa-arrow-right text-xs"></i>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- General requisites -->
+      <div class="mt-20 bg-slate-900 text-white rounded-3xl p-8 md:p-12 shadow-xl border border-white/5">
+        <h3 class="text-xl font-bold mb-6">Requisitos de Admisión Posgrado 2027</h3>
+        <ul class="grid md:grid-cols-3 gap-6 text-sm text-slate-350">
+          <li class="flex gap-2">
+            <i class="fa-solid fa-circle-check text-amber-500 mt-1 flex-shrink-0"></i>
+            <span>Grado de Bachiller Académico debidamente registrado en SUNEDU.</span>
+          </li>
+          <li class="flex gap-2">
+            <i class="fa-solid fa-circle-check text-amber-500 mt-1 flex-shrink-0"></i>
+            <span>Experiencia profesional mínima de 2 años en puestos de gestión o dirección.</span>
+          </li>
+          <li class="flex gap-2">
+            <i class="fa-solid fa-circle-check text-amber-500 mt-1 flex-shrink-0"></i>
+            <span>Aprobación de la entrevista personal y análisis de carpeta de méritos.</span>
+          </li>
+        </ul>
+      </div>
+    </section>
+  </main>
+  
+  <Footer />
+</Layout>

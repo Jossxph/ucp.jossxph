@@ -1,0 +1,145 @@
+---
+/**
+ * Faq — Accordion FAQ with search functionality.
+ * Uses SectionHeader for visual consistency.
+ */
+import SectionHeader from './SectionHeader.astro';
+
+const faqItems = [
+  {
+    question: '¿Cuándo se realiza el próximo examen de admisión?',
+    answer: 'Nuestro próximo examen de admisión ordinario está programado para el <strong class="text-slate-800">domingo 10 de Marzo de 2027</strong>. Las inscripciones estarán abiertas desde el 15 de Enero hasta el 28 de Febrero. Puedes realizar tu pre-inscripción 100% en línea desde nuestro portal de admisión.',
+  },
+  {
+    question: '¿Qué modalidades de ingreso directo ofrecen?',
+    answer: 'Contamos con ingreso directo para alumnos egresados que hayan obtenido el <strong class="text-slate-800">Primer o Segundo puesto</strong> de su promoción escolar, deportistas calificados acreditados, egresados de bachillerato internacional y traslados externos que cumplan con un mínimo de 72 créditos aprobados en su institución de origen.',
+  },
+  {
+    question: '¿Cuál es el costo de las pensiones y la matrícula?',
+    answer: 'El costo varía según la carrera elegida y la escala socioeconómica. Ofrecemos diferentes categorías de pago y planes de financiamiento. Puedes calcular tu cuota mensual usando nuestro <a href="/simulador" class="text-amber-600 font-bold hover:underline">Simulador de Pensiones</a> en línea.',
+  },
+  {
+    question: '¿Qué tipos de becas otorgan a los estudiantes?',
+    answer: 'Ofrecemos becas completas y parciales por <strong class="text-slate-800">Excelencia Académica</strong> (primeros puestos), becas por representación Deportiva/Artística nacional, y becas de Asistencia Socioeconómica destinadas a alumnos con dificultades económicas comprobadas.',
+  },
+  {
+    question: '¿Cuentan con convenios internacionales?',
+    answer: 'Sí, tenemos convenios de intercambio académico con más de <strong class="text-slate-800">20 universidades prestigiosas</strong> en España, Estados Unidos, Colombia, Chile, México y Brasil. Los estudiantes pueden postular a semestres de intercambio a partir del quinto ciclo.',
+  },
+];
+---
+
+<section id="faq" class="section-padding bg-white border-t border-slate-100 relative overflow-hidden">
+  <!-- Decorative -->
+  <div class="absolute right-0 bottom-0 w-80 h-80 bg-amber-500/5 rounded-full filter blur-[100px] pointer-events-none"></div>
+  <div class="absolute left-0 top-0 w-80 h-80 bg-blue-500/5 rounded-full filter blur-[100px] pointer-events-none"></div>
+
+  <div class="max-w-4xl mx-auto px-4 relative z-10">
+
+    <SectionHeader
+      badge="Preguntas Frecuentes"
+      title="¿Tienes alguna duda?"
+      description="Encuentra respuestas rápidas sobre admisión, costos, becas y servicios de la Universidad Carrión Porras."
+    />
+
+    <!-- Search -->
+    <div class="max-w-md mx-auto relative mb-12 -mt-8">
+      <input
+        type="text"
+        id="faq-search"
+        placeholder="Buscar pregunta o tema..."
+        class="w-full pl-11 pr-4 py-3 rounded-xl border border-slate-200 bg-slate-50 text-sm focus:outline-none focus:border-amber-500 focus:ring-2 focus:ring-amber-500/15 transition-all duration-300"
+      />
+      <i class="fa-solid fa-magnifying-glass text-slate-400 absolute left-4 top-1/2 -translate-y-1/2 text-sm"></i>
+    </div>
+
+    <!-- Accordion -->
+    <div class="space-y-3" id="faq-list">
+      {faqItems.map(item => (
+        <div class="faq-item border border-slate-200/60 rounded-2xl bg-slate-50/50 hover:bg-white hover:border-slate-300/80 transition-all duration-300 overflow-hidden">
+          <button class="faq-trigger w-full px-6 py-5 text-left flex justify-between items-center gap-4 focus:outline-none cursor-pointer">
+            <span class="font-bold text-slate-800 text-sm md:text-base">{item.question}</span>
+            <span class="faq-icon-wrapper w-8 h-8 rounded-xl bg-slate-100 flex items-center justify-center text-slate-500 transition-all duration-300 flex-shrink-0">
+              <i class="fa-solid fa-plus text-xs transition-transform duration-300"></i>
+            </span>
+          </button>
+          <div class="faq-content max-h-0 opacity-0 overflow-hidden transition-all duration-300 ease-in-out">
+            <div class="px-6 pb-5 text-sm text-slate-500 leading-relaxed border-t border-slate-100/80 pt-4" set:html={item.answer} />
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Empty state -->
+    <div id="faq-empty-state" class="hidden text-center py-14 border border-dashed border-slate-200 rounded-3xl mt-6">
+      <div class="w-14 h-14 rounded-2xl bg-slate-100 flex items-center justify-center mx-auto mb-4">
+        <i class="fa-solid fa-circle-question text-slate-300 text-xl"></i>
+      </div>
+      <p class="text-slate-400 text-sm font-semibold">No se encontraron preguntas que coincidan.</p>
+    </div>
+  </div>
+</section>
+
+<script>
+  // Accordion Logic
+  document.querySelectorAll('.faq-trigger').forEach(trigger => {
+    trigger.addEventListener('click', () => {
+      const parent = trigger.parentElement;
+      const content = trigger.nextElementSibling as HTMLElement;
+      const icon = trigger.querySelector('.faq-icon-wrapper i');
+      const iconWrapper = trigger.querySelector('.faq-icon-wrapper');
+
+      if (!parent || !content || !icon || !iconWrapper) return;
+
+      const isOpen = content.style.maxHeight && content.style.maxHeight !== '0px';
+
+      // Close all
+      document.querySelectorAll('.faq-content').forEach(el => {
+        const htmlEl = el as HTMLElement;
+        htmlEl.style.maxHeight = '0px';
+        htmlEl.style.opacity = '0';
+        htmlEl.parentElement?.classList.remove('bg-white', 'shadow-md', 'border-slate-300');
+
+        const otherIcon = htmlEl.previousElementSibling?.querySelector('.faq-icon-wrapper i');
+        const otherWrapper = htmlEl.previousElementSibling?.querySelector('.faq-icon-wrapper');
+        if (otherIcon) otherIcon.className = 'fa-solid fa-plus text-xs transition-transform duration-300';
+        if (otherWrapper) {
+          otherWrapper.classList.replace('bg-amber-600', 'bg-slate-100');
+          otherWrapper.classList.replace('text-white', 'text-slate-500');
+        }
+      });
+
+      if (!isOpen) {
+        content.style.maxHeight = content.scrollHeight + 'px';
+        content.style.opacity = '1';
+        parent.classList.add('bg-white', 'shadow-md', 'border-slate-300');
+        icon.className = 'fa-solid fa-minus text-xs transition-transform duration-300';
+        iconWrapper.classList.replace('bg-slate-100', 'bg-amber-600');
+        iconWrapper.classList.replace('text-slate-500', 'text-white');
+      }
+    });
+  });
+
+  // Search
+  const searchInput = document.getElementById('faq-search') as HTMLInputElement;
+  const faqItems = document.querySelectorAll('.faq-item');
+  const emptyState = document.getElementById('faq-empty-state');
+
+  searchInput?.addEventListener('input', () => {
+    const query = searchInput.value.toLowerCase().trim();
+    let matched = 0;
+
+    faqItems.forEach(item => {
+      const text = item.textContent?.toLowerCase() || '';
+      const htmlItem = item as HTMLElement;
+      if (text.includes(query)) {
+        htmlItem.style.display = 'block';
+        matched++;
+      } else {
+        htmlItem.style.display = 'none';
+      }
+    });
+
+    emptyState?.classList.toggle('hidden', matched > 0);
+  });
+</script>

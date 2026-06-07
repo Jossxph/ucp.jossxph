@@ -1,0 +1,84 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="Vida Universitaria | Universidad Carrión Porras" description="Conoce nuestras actividades deportivas, talleres culturales, círculos de estudio y servicios de bienestar para el estudiante en la UCP.">
+  <Header />
+  
+  <main class="bg-slate-50 min-h-screen">
+    <!-- Banner Header -->
+    <section class="relative bg-slate-900 text-white py-24 overflow-hidden">
+      <div class="absolute inset-0 opacity-20 bg-[linear-gradient(to_right,#334155_1px,transparent_1px),linear-gradient(to_bottom,#334155_1px,transparent_1px)] bg-[size:4rem_4rem]"></div>
+      <div class="max-w-4xl mx-auto px-4 text-center relative z-10">
+        <span class="text-amber-500 font-bold text-xs uppercase tracking-widest bg-amber-500/10 px-4 py-1.5 rounded-full inline-block mb-4">
+          Comunidad UCP
+        </span>
+        <h1 class="text-4xl md:text-5xl font-black mb-6 tracking-tight">Vida Universitaria</h1>
+        <p class="text-slate-350 text-lg leading-relaxed max-w-2xl mx-auto">
+          El desarrollo integral va más allá de las aulas. Vive la experiencia universitaria UCP participando de nuestros talleres artísticos, clubes deportivos y actividades de integración.
+        </p>
+      </div>
+    </section>
+
+    <!-- Details -->
+    <section class="py-24 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid md:grid-cols-2 gap-10">
+        
+        <!-- Workshops -->
+        <div class="bg-white p-8 rounded-3xl border border-slate-200/50 shadow-md">
+          <div class="w-12 h-12 bg-amber-50 rounded-2xl flex items-center justify-center text-amber-600 mb-6">
+            <i class="fa-solid fa-masks-theater text-xl"></i>
+          </div>
+          <h2 class="text-2xl font-bold text-slate-950 mb-4">Talleres Culturales</h2>
+          <p class="text-slate-650 text-sm leading-relaxed mb-6">
+            Desarrolla tu sensibilidad artística y tu capacidad de expresión en nuestros talleres de:
+          </p>
+          <ul class="space-y-3 text-sm text-slate-600">
+            <li class="flex items-center gap-2.5">
+              <i class="fa-solid fa-circle-play text-amber-500 text-xs"></i>
+              <span>Teatro y Expresión Corporal</span>
+            </li>
+            <li class="flex items-center gap-2.5">
+              <i class="fa-solid fa-circle-play text-amber-500 text-xs"></i>
+              <span>Danzas Folclóricas y Modernas</span>
+            </li>
+            <li class="flex items-center gap-2.5">
+              <i class="fa-solid fa-circle-play text-amber-500 text-xs"></i>
+              <span>Taller de Música e Instrumentos</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Sports -->
+        <div class="bg-white p-8 rounded-3xl border border-slate-200/50 shadow-md">
+          <div class="w-12 h-12 bg-amber-50 rounded-2xl flex items-center justify-center text-amber-600 mb-6">
+            <i class="fa-solid fa-volleyball text-xl"></i>
+          </div>
+          <h2 class="text-2xl font-bold text-slate-950 mb-4">Clubes Deportivos</h2>
+          <p class="text-slate-650 text-sm leading-relaxed mb-6">
+            Entrena, compite y representa a la UCP en los principales campeonatos interuniversitarios en las disciplinas de:
+          </p>
+          <ul class="space-y-3 text-sm text-slate-600">
+            <li class="flex items-center gap-2.5">
+              <i class="fa-solid fa-basketball text-amber-500 text-xs"></i>
+              <span>Básquetbol Masculino y Femenino</span>
+            </li>
+            <li class="flex items-center gap-2.5">
+              <i class="fa-solid fa-football text-amber-500 text-xs"></i>
+              <span>Fútbol 11 y Futsal de Competición</span>
+            </li>
+            <li class="flex items-center gap-2.5">
+              <i class="fa-solid fa-medal text-amber-500 text-xs"></i>
+              <span>Atletismo y Natación</span>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+  </main>
+  
+  <Footer />
+</Layout>

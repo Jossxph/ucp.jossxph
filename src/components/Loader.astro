@@ -1,0 +1,94 @@
+---
+/**
+ * Loader — Premium page loading screen with spinning rings and progress bar.
+ * Displays the UCP branding while the page loads, then transitions to a
+ * skeleton screen before revealing the actual content.
+ */
+import { Image } from 'astro:assets';
+import logoImg from '../assets/images/logosinfondoucp.png';
+---
+
+<!-- Full Page Loader Overlay -->
+<div id="page-loader" class="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-navy-950 transition-opacity duration-500">
+  <!-- Logo animation container -->
+  <div class="relative flex items-center justify-center mb-8">
+    <!-- Outer spinning ring -->
+    <div class="w-28 h-28 border-[3px] border-gold-500/10 border-t-gold-500 rounded-full animate-spin"></div>
+    <!-- Inner counter-spinning ring -->
+    <div class="absolute w-20 h-20 border-[3px] border-transparent border-t-white/30 border-b-white/30 rounded-full animate-spin-slow"></div>
+    <!-- Logo center -->
+    <div class="absolute w-14 h-14 flex items-center justify-center">
+      <Image
+        src={logoImg}
+        alt="UCP"
+        class="w-12 h-12 object-contain"
+        width={48}
+        height={48}
+        loading="eager"
+      />
+    </div>
+  </div>
+
+  <!-- University name -->
+  <h2 class="text-lg font-bold text-white tracking-[0.25em] uppercase mb-1">Universidad</h2>
+  <h3 class="text-sm font-semibold text-gold-500 tracking-[0.3em] uppercase mb-6">Carrión Porras</h3>
+
+  <!-- Progress bar -->
+  <div class="w-48 h-[3px] bg-navy-800 rounded-full overflow-hidden">
+    <div class="h-full bg-gradient-to-r from-gold-600 via-gold-400 to-gold-600 w-1/3 rounded-full animate-progress"></div>
+  </div>
+  <p class="text-[10px] text-slate-500 mt-3 uppercase tracking-[0.25em] font-medium animate-pulse">Cargando...</p>
+</div>
+
+<!-- Skeleton Screen (shows briefly after loader fades) -->
+<div id="skeleton-screen" class="fixed inset-0 z-[9998] bg-slate-50 flex flex-col overflow-hidden transition-opacity duration-300">
+  <!-- Nav Skeleton -->
+  <div class="h-20 bg-white border-b border-slate-100 flex justify-between items-center px-8">
+    <div class="h-10 w-40 bg-slate-200 rounded-lg animate-pulse"></div>
+    <div class="hidden md:flex space-x-6">
+      <div class="h-5 w-24 bg-slate-200 rounded animate-pulse"></div>
+      <div class="h-5 w-24 bg-slate-200 rounded animate-pulse"></div>
+      <div class="h-5 w-24 bg-slate-200 rounded animate-pulse"></div>
+      <div class="h-5 w-24 bg-slate-200 rounded animate-pulse"></div>
+    </div>
+    <div class="h-10 w-36 bg-slate-200 rounded-full animate-pulse"></div>
+  </div>
+
+  <!-- Hero Skeleton -->
+  <div class="flex-1 max-w-5xl mx-auto w-full px-6 flex flex-col items-center justify-center text-center gap-6">
+    <div class="h-5 w-32 bg-slate-200 rounded-full animate-pulse"></div>
+    <div class="h-14 w-3/4 max-w-2xl bg-slate-200 rounded-xl animate-pulse"></div>
+    <div class="h-5 w-2/3 max-w-lg bg-slate-200 rounded-lg animate-pulse"></div>
+    <div class="flex gap-4 mt-4">
+      <div class="h-12 w-40 bg-slate-200 rounded-full animate-pulse"></div>
+      <div class="h-12 w-44 bg-slate-200 rounded-full animate-pulse"></div>
+    </div>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-8 w-full max-w-3xl mt-8">
+      <div class="h-20 bg-slate-200 rounded-2xl animate-pulse"></div>
+      <div class="h-20 bg-slate-200 rounded-2xl animate-pulse"></div>
+      <div class="h-20 bg-slate-200 rounded-2xl animate-pulse"></div>
+      <div class="h-20 bg-slate-200 rounded-2xl animate-pulse"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+  window.addEventListener('load', () => {
+    const loader = document.getElementById('page-loader');
+    const skeleton = document.getElementById('skeleton-screen');
+
+    setTimeout(() => {
+      if (loader) {
+        loader.style.opacity = '0';
+        setTimeout(() => loader.style.display = 'none', 500);
+      }
+
+      setTimeout(() => {
+        if (skeleton) {
+          skeleton.style.opacity = '0';
+          setTimeout(() => skeleton.style.display = 'none', 300);
+        }
+      }, 200);
+    }, 800);
+  });
+</script>

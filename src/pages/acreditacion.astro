@@ -1,0 +1,124 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="Acreditaciones | Universidad Carrión Porras" description="Conoce las certificaciones nacionales e internacionales que avalan la calidad académica de los programas de la Universidad Carrión Porras.">
+  <Header />
+  
+  <main class="bg-slate-50 min-h-screen">
+    <!-- Banner Header -->
+    <section class="relative bg-slate-900 text-white py-24 overflow-hidden">
+      <div class="absolute inset-0 opacity-20 bg-[linear-gradient(to_right,#334155_1px,transparent_1px),linear-gradient(to_bottom,#334155_1px,transparent_1px)] bg-[size:4rem_4rem]"></div>
+      <div class="max-w-4xl mx-auto px-4 text-center relative z-10">
+        <span class="text-amber-500 font-bold text-xs uppercase tracking-widest bg-amber-500/10 px-4 py-1.5 rounded-full inline-block mb-4">
+          Garantía Académica
+        </span>
+        <h1 class="text-4xl md:text-5xl font-black mb-6 tracking-tight">Acreditación de Calidad</h1>
+        <p class="text-slate-350 text-lg leading-relaxed max-w-2xl mx-auto">
+          Nuestra excelencia académica está avalada y certificada por las organizaciones evaluadoras más exigentes a nivel nacional e internacional.
+        </p>
+      </div>
+    </section>
+
+    <!-- Accreditation details grid -->
+    <section class="py-24 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="space-y-16">
+        
+        <!-- SINEACE -->
+        <div class="bg-white p-8 md:p-12 rounded-3xl border border-slate-200/50 shadow-md flex flex-col md:flex-row items-center gap-10">
+          <div class="w-32 h-32 flex-shrink-0 bg-slate-50 rounded-2xl flex items-center justify-center border border-slate-100 p-2">
+            <svg class="h-24 w-auto text-amber-500" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M30 65C25 55 25 40 35 30C45 20 60 20 70 30" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <path d="M70 65C75 55 75 40 65 30C55 20 40 20 30 30" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <path d="M50 38V58M43 45L50 38L57 45" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <text x="50" y="75" text-anchor="middle" font-size="8" font-weight="extrabold" fill="#0f172a" letter-spacing="1">SINEACE</text>
+            </svg>
+          </div>
+          <div>
+            <h2 class="text-2xl font-bold text-slate-950 mb-3">SINEACE (Acreditación Nacional)</h2>
+            <p class="text-slate-650 text-sm leading-relaxed mb-4">
+              El Sistema Nacional de Evaluación, Acreditación y Certificación de la Calidad Educativa avala que nuestras carreras profesionales cumplen rigurosamente con los 34 estándares de calidad educativa superior en el país.
+            </p>
+            <span class="inline-flex items-center gap-1.5 text-xs text-amber-600 font-extrabold uppercase tracking-widest bg-amber-500/10 px-3.5 py-1.5 rounded-full">
+              <i class="fa-solid fa-circle-check text-emerald-500"></i> Certificación Oficial Vigente
+            </span>
+          </div>
+        </div>
+
+        <!-- AACSB -->
+        <div class="bg-white p-8 md:p-12 rounded-3xl border border-slate-200/50 shadow-md flex flex-col md:flex-row items-center gap-10">
+          <div class="w-32 h-32 flex-shrink-0 bg-slate-50 rounded-2xl flex items-center justify-center border border-slate-100 p-2">
+            <svg class="h-24 w-auto text-amber-500" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="50" cy="50" r="45" stroke="currentColor" stroke-width="2" stroke-dasharray="3 3"/>
+              <circle cx="50" cy="50" r="38" fill="currentColor" fill-opacity="0.1"/>
+              <path d="M50 25L55.8 37.5L69.5 39L59.2 48.2L62.2 61.5L50 54.5L37.8 61.5L40.8 48.2L30.5 39L44.2 37.5L50 25Z" fill="currentColor"/>
+              <text x="50" y="80" text-anchor="middle" font-size="8" font-weight="extrabold" fill="#0f172a" letter-spacing="1">ACCREDITED</text>
+            </svg>
+          </div>
+          <div>
+            <h2 class="text-2xl font-bold text-slate-950 mb-3">AACSB International (Acreditación Global)</h2>
+            <p class="text-slate-650 text-sm leading-relaxed mb-4">
+              La Association to Advance Collegiate Schools of Business acredita mundialmente a las mejores escuelas de negocios. La facultad de Ciencias Empresariales de la UCP forma parte de este selecto grupo, abriendo oportunidades para dobles titulaciones globales.
+            </p>
+            <span class="inline-flex items-center gap-1.5 text-xs text-amber-600 font-extrabold uppercase tracking-widest bg-amber-500/10 px-3.5 py-1.5 rounded-full">
+              <i class="fa-solid fa-circle-check text-emerald-500"></i> Estándar de Negocios Global
+            </span>
+          </div>
+        </div>
+
+        <!-- ISO 9001 -->
+        <div class="bg-white p-8 md:p-12 rounded-3xl border border-slate-200/50 shadow-md flex flex-col md:flex-row items-center gap-10">
+          <div class="w-32 h-32 flex-shrink-0 bg-slate-50 rounded-2xl flex items-center justify-center border border-slate-100 p-2">
+            <svg class="h-24 w-auto text-amber-500" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M50 15L80 25V55C80 72 67 85 50 90C33 85 20 72 20 55V25L50 15Z" stroke="currentColor" stroke-width="2" fill="currentColor" fill-opacity="0.1"/>
+              <path d="M40 50L47 57L62 42" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+              <text x="50" y="72" text-anchor="middle" font-size="8" font-weight="extrabold" fill="#0f172a" letter-spacing="1">ISO 9001</text>
+            </svg>
+          </div>
+          <div>
+            <h2 class="text-2xl font-bold text-slate-950 mb-3">ISO 9001 (Calidad en Gestión Educativa)</h2>
+            <p class="text-slate-650 text-sm leading-relaxed mb-4">
+              Nuestros procesos de matrícula, enseñanza, evaluación e investigación académica están regulados por la norma internacional ISO 9001 de calidad de procesos, lo que garantiza el orden y seriedad institucional.
+            </p>
+            <span class="inline-flex items-center gap-1.5 text-xs text-amber-600 font-extrabold uppercase tracking-widest bg-amber-500/10 px-3.5 py-1.5 rounded-full">
+              <i class="fa-solid fa-circle-check text-emerald-500"></i> Calidad en Procesos Certificada
+            </span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Benefits of Accreditation -->
+      <div class="mt-24 bg-slate-900 text-white rounded-3xl p-8 md:p-12 shadow-xl border border-white/5 text-center">
+        <h3 class="text-2xl font-bold mb-4">¿Por qué es importante para ti como alumno?</h3>
+        <div class="grid md:grid-cols-3 gap-8 mt-10">
+          <div class="flex flex-col items-center">
+            <div class="w-12 h-12 bg-amber-500/15 rounded-full flex items-center justify-center text-amber-400 font-bold mb-3">
+              <i class="fa-solid fa-graduation-cap"></i>
+            </div>
+            <h4 class="font-bold text-lg mb-2">Validez Oficial</h4>
+            <p class="text-slate-400 text-xs leading-relaxed">Garantía absoluta del valor legal de tu título nacional e internacionalmente.</p>
+          </div>
+          <div class="flex flex-col items-center">
+            <div class="w-12 h-12 bg-amber-500/15 rounded-full flex items-center justify-center text-amber-400 font-bold mb-3">
+              <i class="fa-solid fa-user-tie"></i>
+            </div>
+            <h4 class="font-bold text-lg mb-2">Mayor Empleabilidad</h4>
+            <p class="text-slate-400 text-xs leading-relaxed">Las principales empresas del país prefieren reclutar egresados de universidades acreditadas.</p>
+          </div>
+          <div class="flex flex-col items-center">
+            <div class="w-12 h-12 bg-amber-500/15 rounded-full flex items-center justify-center text-amber-400 font-bold mb-3">
+              <i class="fa-solid fa-plane-departure"></i>
+            </div>
+            <h4 class="font-bold text-lg mb-2">Movilidad Global</h4>
+            <p class="text-slate-400 text-xs leading-relaxed">Facilidad de convalidación para posgrados y empleos en el extranjero.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  
+  <Footer />
+</Layout>

@@ -1,0 +1,85 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="Educación Continua | Universidad Carrión Porras" description="Actualiza tus competencias con nuestros cursos de especialización profesional, diplomados rápidos y talleres prácticos de la UCP.">
+  <Header />
+  
+  <main class="bg-slate-50 min-h-screen">
+    <!-- Banner Header -->
+    <section class="relative bg-slate-900 text-white py-24 overflow-hidden">
+      <div class="absolute inset-0 opacity-20 bg-[linear-gradient(to_right,#334155_1px,transparent_1px),linear-gradient(to_bottom,#334155_1px,transparent_1px)] bg-[size:4rem_4rem]"></div>
+      <div class="max-w-4xl mx-auto px-4 text-center relative z-10">
+        <span class="text-amber-500 font-bold text-xs uppercase tracking-widest bg-amber-500/10 px-4 py-1.5 rounded-full inline-block mb-4">
+          Actualización Profesional
+        </span>
+        <h1 class="text-4xl md:text-5xl font-black mb-6 tracking-tight">Educación Continua 2027</h1>
+        <p class="text-slate-350 text-lg leading-relaxed max-w-2xl mx-auto">
+          Cursos de especialización y diplomados cortos de alta demanda laboral para actualizar tus habilidades e impulsar tu carrera al instante.
+        </p>
+      </div>
+    </section>
+
+    <!-- Programs list -->
+    <section class="py-24 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid md:grid-cols-3 gap-8">
+        
+        <!-- Program 1 -->
+        <div class="bg-white p-6 rounded-2xl border border-slate-200/50 shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
+          <div>
+            <div class="flex justify-between items-center mb-4">
+              <span class="bg-amber-600/10 text-amber-800 text-[10px] font-extrabold uppercase px-2.5 py-1 rounded-full">Diplomado</span>
+              <span class="text-slate-400 text-xs font-semibold">4 Meses</span>
+            </div>
+            <h3 class="font-extrabold text-slate-950 text-lg mb-2">Diplomado en Inteligencia Artificial Aplicada</h3>
+            <p class="text-slate-600 text-xs leading-relaxed mb-6">
+              Aprende a integrar APIs de IA, automatizar procesos empresariales y optimizar flujos de trabajo en tus proyectos cotidianos.
+            </p>
+          </div>
+          <a href="/contacto" class="text-amber-600 font-bold hover:text-amber-700 text-xs flex items-center gap-1.5 pt-4 border-t border-slate-50">
+            Ver costos y fechas <i class="fas fa-arrow-right text-[10px]"></i>
+          </a>
+        </div>
+
+        <!-- Program 2 -->
+        <div class="bg-white p-6 rounded-2xl border border-slate-200/50 shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
+          <div>
+            <div class="flex justify-between items-center mb-4">
+              <span class="bg-amber-600/10 text-amber-800 text-[10px] font-extrabold uppercase px-2.5 py-1 rounded-full">Curso Especial</span>
+              <span class="text-slate-400 text-xs font-semibold">2 Meses</span>
+            </div>
+            <h3 class="font-extrabold text-slate-950 text-lg mb-2">Metodologías Ágiles (Scrum & Kanban)</h3>
+            <p class="text-slate-600 text-xs leading-relaxed mb-6">
+              Certificación en roles de Scrum Master y Product Owner. Aprende a liderar equipos de desarrollo de software eficientes y dinámicos.
+            </p>
+          </div>
+          <a href="/contacto" class="text-amber-600 font-bold hover:text-amber-700 text-xs flex items-center gap-1.5 pt-4 border-t border-slate-50">
+            Ver costos y fechas <i class="fas fa-arrow-right text-[10px]"></i>
+          </a>
+        </div>
+
+        <!-- Program 3 -->
+        <div class="bg-white p-6 rounded-2xl border border-slate-200/50 shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
+          <div>
+            <div class="flex justify-between items-center mb-4">
+              <span class="bg-amber-600/10 text-amber-800 text-[10px] font-extrabold uppercase px-2.5 py-1 rounded-full">Diplomado</span>
+              <span class="text-slate-400 text-xs font-semibold">5 Meses</span>
+            </div>
+            <h3 class="font-extrabold text-slate-950 text-lg mb-2">Dirección de Marketing Digital y Growth</h3>
+            <p class="text-slate-600 text-xs leading-relaxed mb-6">
+              Aprende a formular campañas publicitarias de alto retorno, analítica de datos avanzada y estrategias de posicionamiento SEO/SEM orgánicas.
+            </p>
+          </div>
+          <a href="/contacto" class="text-amber-600 font-bold hover:text-amber-700 text-xs flex items-center gap-1.5 pt-4 border-t border-slate-50">
+            Ver costos y fechas <i class="fas fa-arrow-right text-[10px]"></i>
+          </a>
+        </div>
+
+      </div>
+    </section>
+  </main>
+  
+  <Footer />
+</Layout>

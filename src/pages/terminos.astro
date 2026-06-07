@@ -1,0 +1,67 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="Términos y Condiciones | Universidad Carrión Porras" description="Consulta las condiciones y términos de uso legales que regulan el acceso al portal institucional y servicios de la UCP.">
+  <Header />
+  
+  <main class="bg-slate-50 min-h-screen">
+    <!-- Banner Header -->
+    <section class="relative bg-slate-900 text-white py-24 overflow-hidden">
+      <div class="absolute inset-0 opacity-20 bg-[linear-gradient(to_right,#334155_1px,transparent_1px),linear-gradient(to_bottom,#334155_1px,transparent_1px)] bg-[size:4rem_4rem]"></div>
+      <div class="max-w-4xl mx-auto px-4 text-center relative z-10">
+        <span class="text-amber-500 font-bold text-xs uppercase tracking-widest bg-amber-500/10 px-4 py-1.5 rounded-full inline-block mb-4">
+          Aspectos Legales
+        </span>
+        <h1 class="text-4xl md:text-5xl font-black mb-6 tracking-tight">Términos y Condiciones</h1>
+        <p class="text-slate-350 text-lg leading-relaxed max-w-2xl mx-auto">
+          Condiciones aplicables para el uso de la plataforma virtual, procesos de matrícula y servicios digitales de la UCP 2027.
+        </p>
+      </div>
+    </section>
+
+    <!-- Content -->
+    <section class="py-24 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="bg-white p-8 md:p-12 rounded-3xl border border-slate-200/60 shadow-lg space-y-8 text-sm text-slate-650 leading-relaxed">
+        
+        <div>
+          <h2 class="text-xl font-bold text-slate-950 mb-3">1. Aceptación de los Términos</h2>
+          <p>
+            Al acceder, navegar o utilizar el portal web institucional de la Universidad Carrión Porras (UCP), usted acepta estar sujeto a los presentes términos y condiciones de uso. Si no está de acuerdo con alguna de estas condiciones, le sugerimos abstenerse de usar estas plataformas.
+          </p>
+        </div>
+
+        <div>
+          <h2 class="text-xl font-bold text-slate-950 mb-3">2. Propiedad Intelectual</h2>
+          <p>
+            Todos los textos, imágenes, logotipos vectoriales, archivos de código, materiales didácticos y contenidos audiovisuales alojados en esta plataforma son propiedad exclusiva de la Universidad Carrión Porras (UCP) o de sus respectivos licenciantes, estando protegidos bajo la legislación nacional de derechos de autor. Queda prohibida la reproducción parcial o total sin consentimiento previo por escrito.
+          </p>
+        </div>
+
+        <div>
+          <h2 class="text-xl font-bold text-slate-950 mb-3">3. Uso del Portal y del Campus Virtual</h2>
+          <p>
+            El alumno se compromete a hacer un uso lícito y ético de su cuenta del Campus Virtual. Queda prohibido compartir contraseñas con terceros, cargar software dañino o realizar cualquier acción orientada a alterar la estabilidad de los servidores académicos institucionales.
+          </p>
+        </div>
+
+        <div>
+          <h2 class="text-xl font-bold text-slate-950 mb-3">4. Limitación de Responsabilidad</h2>
+          <p>
+            La universidad realiza esfuerzos constantes para garantizar la disponibilidad técnica de sus portales web. Sin embargo, no se hace responsable por caídas temporales del servicio debidas a causas externas, mantenimiento programado o fallas en el proveedor de internet del usuario.
+          </p>
+        </div>
+
+        <div class="pt-6 border-t border-slate-100 flex justify-between items-center text-xs text-slate-400">
+          <span>Última actualización: Junio de 2027</span>
+          <span>UCP Asesoría Legal</span>
+        </div>
+
+      </div>
+    </section>
+  </main>
+  
+  <Footer />
+</Layout>

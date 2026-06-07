@@ -1,0 +1,32 @@
+---
+/**
+ * SectionHeader — Reusable section header with badge, title, and description.
+ * Used across all homepage sections and subpages for visual consistency.
+ */
+interface Props {
+  badge: string;
+  title: string;
+  description?: string;
+  align?: 'center' | 'left';
+  dark?: boolean;
+}
+
+const { badge, title, description, align = 'center', dark = false } = Astro.props;
+---
+
+<div class={`mb-16 md:mb-20 ${align === 'center' ? 'text-center' : 'text-left'}`}>
+  <span class={dark ? 'badge-dark' : 'badge'}>
+    <i class="fa-solid fa-circle text-[5px] opacity-60"></i>
+    {badge}
+  </span>
+
+  <h2 class={`text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight mt-5 mb-5 leading-tight ${dark ? 'text-white' : 'text-slate-900'}`}>
+    {title}
+  </h2>
+
+  {description && (
+    <p class={`text-base md:text-lg max-w-2xl leading-relaxed ${align === 'center' ? 'mx-auto' : ''} ${dark ? 'text-slate-400' : 'text-slate-500'}`}>
+      {description}
+    </p>
+  )}
+</div>

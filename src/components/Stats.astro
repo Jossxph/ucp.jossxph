@@ -1,0 +1,141 @@
+---
+/**
+ * Stats — Achievement statistics and accreditation panel.
+ * Features animated counters and SVG accreditation badges.
+ */
+import SectionHeader from './SectionHeader.astro';
+
+const stats = [
+  { icon: 'fa-calendar-alt', value: '50', suffix: '+', label: 'Años de Experiencia', desc: 'Formando profesionales con valores sólidos desde 1973.' },
+  { icon: 'fa-user-graduate', value: '20', suffix: 'K+', label: 'Graduados Exitosos', desc: 'Egresados lideran empresas prestigiosas a nivel global.' },
+  { icon: 'fa-earth-americas', value: '100', suffix: '+', label: 'Convenios Globales', desc: 'Alianzas con universidades de América, Europa y Asia.' },
+  { icon: 'fa-book-open', value: '30', suffix: '+', label: 'Programas Académicos', desc: 'Carreras de pregrado, maestrías y diplomados de alta demanda.' },
+];
+---
+
+<section class="section-padding bg-gradient-to-b from-white to-slate-50 relative overflow-hidden">
+  <!-- Decorative elements -->
+  <div class="absolute inset-0 pointer-events-none">
+    <div class="absolute top-0 left-0 w-72 h-72 bg-amber-500 rounded-full filter blur-[140px] opacity-[0.04] -translate-x-1/2 -translate-y-1/2"></div>
+    <div class="absolute bottom-0 right-0 w-72 h-72 bg-blue-500 rounded-full filter blur-[140px] opacity-[0.03] translate-x-1/2 translate-y-1/2"></div>
+  </div>
+
+  <div class="container-max relative">
+
+    <SectionHeader
+      badge="Trayectoria de Excelencia"
+      title="Nuestros Logros"
+      description="Medio siglo de compromiso con la excelencia académica, la investigación científica y la formación de líderes con impacto social."
+    />
+
+    <!-- Stats Grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-20">
+      {stats.map(stat => (
+        <div class="group bg-white p-7 rounded-2xl border border-slate-200/60 shadow-sm card-hover">
+          <div class="icon-box-light mb-5 group-hover:scale-110 transition-transform duration-300">
+            <i class={`fas ${stat.icon} text-xl`}></i>
+          </div>
+          <div class="flex items-baseline gap-1 mb-2.5">
+            <span class="text-4xl lg:text-5xl font-black text-slate-900 stat-counter" data-target={stat.value} data-suffix={stat.suffix}>0</span>
+            <span class="text-xl font-bold text-amber-600">{stat.suffix}</span>
+          </div>
+          <h3 class="text-base font-bold text-slate-900 mb-2">{stat.label}</h3>
+          <p class="text-slate-500 text-sm leading-relaxed">{stat.desc}</p>
+        </div>
+      ))}
+    </div>
+
+    <!-- Accreditation Panel -->
+    <div class="bg-gradient-to-br from-navy-900 via-navy-950 to-navy-900 rounded-3xl p-8 md:p-12 shadow-2xl border border-white/5 relative overflow-hidden">
+      <!-- Decorative glow -->
+      <div class="absolute top-0 right-0 w-60 h-60 bg-gold-500 rounded-full filter blur-[100px] opacity-[0.05] pointer-events-none"></div>
+
+      <div class="flex flex-col lg:flex-row items-center justify-between gap-10 relative z-10">
+        <div class="flex-1 text-center lg:text-left">
+          <span class="badge-dark mb-3">
+            <i class="fa-solid fa-shield-halved text-[10px]"></i>
+            Garantía de Calidad
+          </span>
+          <h3 class="text-2xl md:text-3xl font-extrabold text-white mt-4 mb-4 tracking-tight">
+            Acreditaciones Internacionales
+          </h3>
+          <p class="text-slate-400 text-sm leading-relaxed max-w-xl">
+            Nuestros programas están homologados por entidades acreditadoras de prestigio global, asegurando educación del más alto nivel académico y ético.
+          </p>
+        </div>
+
+        <!-- Accreditation Badges -->
+        <div class="flex flex-wrap items-center justify-center gap-6 md:gap-10 bg-white/[0.03] backdrop-blur-md rounded-2xl p-6 border border-white/5">
+          <!-- AACSB -->
+          <div class="flex flex-col items-center gap-2 opacity-80 hover:opacity-100 hover:scale-110 transition-all duration-300">
+            <div class="w-16 h-16 rounded-2xl bg-gold-500/10 border border-gold-500/20 flex items-center justify-center">
+              <svg class="h-8 w-8 text-gold-500" viewBox="0 0 100 100" fill="none">
+                <circle cx="50" cy="50" r="40" stroke="currentColor" stroke-width="2" stroke-dasharray="3 3"/>
+                <path d="M50 25L55.8 37.5L69.5 39L59.2 48.2L62.2 61.5L50 54.5L37.8 61.5L40.8 48.2L30.5 39L44.2 37.5L50 25Z" fill="currentColor"/>
+              </svg>
+            </div>
+            <span class="text-[9px] text-slate-400 font-bold tracking-wider">AACSB</span>
+          </div>
+
+          <!-- ISO 9001 -->
+          <div class="flex flex-col items-center gap-2 opacity-80 hover:opacity-100 hover:scale-110 transition-all duration-300">
+            <div class="w-16 h-16 rounded-2xl bg-gold-500/10 border border-gold-500/20 flex items-center justify-center">
+              <svg class="h-8 w-8 text-gold-500" viewBox="0 0 100 100" fill="none">
+                <path d="M50 15L80 25V55C80 72 67 85 50 90C33 85 20 72 20 55V25L50 15Z" stroke="currentColor" stroke-width="2" fill="currentColor" fill-opacity="0.1"/>
+                <path d="M40 50L47 57L62 42" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <span class="text-[9px] text-slate-400 font-bold tracking-wider">ISO 9001</span>
+          </div>
+
+          <!-- SINEACE -->
+          <div class="flex flex-col items-center gap-2 opacity-80 hover:opacity-100 hover:scale-110 transition-all duration-300">
+            <div class="w-16 h-16 rounded-2xl bg-gold-500/10 border border-gold-500/20 flex items-center justify-center">
+              <svg class="h-8 w-8 text-gold-500" viewBox="0 0 100 100" fill="none">
+                <path d="M30 65C25 55 25 40 35 30C45 20 60 20 70 30" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                <path d="M70 65C75 55 75 40 65 30C55 20 40 20 30 30" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                <path d="M50 38V58M43 45L50 38L57 45" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <span class="text-[9px] text-slate-400 font-bold tracking-wider">SINEACE</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<script>
+  // Animated counter for stats
+  function animateStatCounters() {
+    const counters = document.querySelectorAll('.stat-counter');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const el = entry.target as HTMLElement;
+          const target = parseInt(el.dataset.target || '0');
+          let current = 0;
+          const duration = 1800;
+          const step = target / (duration / 16);
+
+          const timer = setInterval(() => {
+            current += step;
+            if (current >= target) {
+              current = target;
+              clearInterval(timer);
+            }
+            el.textContent = Math.floor(current).toString();
+          }, 16);
+
+          observer.unobserve(el);
+        }
+      });
+    }, { threshold: 0.3 });
+
+    counters.forEach(c => observer.observe(c));
+  }
+
+  animateStatCounters();
+</script>

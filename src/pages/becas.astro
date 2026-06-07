@@ -1,0 +1,113 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="Becas y Financiamiento | Universidad Carrión Porras" description="Conoce el programa de Becas de Excelencia, Becas Deportivas e incentivos socio-económicos disponibles para estudiantes de la UCP.">
+  <Header />
+  
+  <main class="bg-slate-50 min-h-screen">
+    <!-- Banner Header -->
+    <section class="relative bg-slate-900 text-white py-24 overflow-hidden">
+      <div class="absolute inset-0 opacity-20 bg-[linear-gradient(to_right,#334155_1px,transparent_1px),linear-gradient(to_bottom,#334155_1px,transparent_1px)] bg-[size:4rem_4rem]"></div>
+      <div class="max-w-4xl mx-auto px-4 text-center relative z-10">
+        <span class="text-amber-500 font-bold text-xs uppercase tracking-widest bg-amber-500/10 px-4 py-1.5 rounded-full inline-block mb-4">
+          Oportunidades de Crecimiento
+        </span>
+        <h1 class="text-4xl md:text-5xl font-black mb-6 tracking-tight">Becas y Convenios</h1>
+        <p class="text-slate-350 text-lg leading-relaxed max-w-2xl mx-auto">
+          Premia tu esfuerzo y talento. Ofrecemos diversas alternativas de becas y financiamiento para que nada limite tu desarrollo profesional.
+        </p>
+      </div>
+    </section>
+
+    <!-- Scholarships options details -->
+    <section class="py-24 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid md:grid-cols-3 gap-8">
+        
+        <!-- Beca 1: Excelencia -->
+        <div class="bg-white p-8 rounded-3xl border border-slate-200/50 shadow-md flex flex-col justify-between hover:-translate-y-1 transition-transform duration-300">
+          <div>
+            <div class="w-12 h-12 bg-amber-50 rounded-2xl flex items-center justify-center text-amber-600 font-bold text-lg mb-6">
+              <i class="fa-solid fa-graduation-cap"></i>
+            </div>
+            <h3 class="text-xl font-bold text-slate-950 mb-3">Beca Excelencia Académica</h3>
+            <p class="text-slate-600 text-sm mb-6 leading-relaxed">
+              Premia a los estudiantes con un promedio de calificaciones sobresaliente en el nivel secundario o que logren pertenecer al décimo superior durante su vida universitaria.
+            </p>
+          </div>
+          <div class="pt-6 border-t border-slate-50">
+            <span class="text-xs font-bold text-amber-600 block uppercase tracking-widest mb-1">Cobertura</span>
+            <p class="text-slate-900 font-extrabold text-sm">Hasta el 50% al 100% en pensión</p>
+          </div>
+        </div>
+
+        <!-- Beca 2: Deportes -->
+        <div class="bg-white p-8 rounded-3xl border border-slate-200/50 shadow-md flex flex-col justify-between hover:-translate-y-1 transition-transform duration-300">
+          <div>
+            <div class="w-12 h-12 bg-amber-50 rounded-2xl flex items-center justify-center text-amber-600 font-bold text-lg mb-6">
+              <i class="fa-solid fa-volleyball"></i>
+            </div>
+            <h3 class="text-xl font-bold text-slate-950 mb-3">Beca Deportista Destacado</h3>
+            <p class="text-slate-600 text-sm mb-6 leading-relaxed">
+              Dirigido a jóvenes atletas de alto rendimiento con participación activa a nivel nacional o regional que representen con honor a la UCP en competencias.
+            </p>
+          </div>
+          <div class="pt-6 border-t border-slate-50">
+            <span class="text-xs font-bold text-amber-600 block uppercase tracking-widest mb-1">Cobertura</span>
+            <p class="text-slate-900 font-extrabold text-sm">Hasta el 30% al 70% en pensión</p>
+          </div>
+        </div>
+
+        <!-- Beca 3: Socio-economica -->
+        <div class="bg-white p-8 rounded-3xl border border-slate-200/50 shadow-md flex flex-col justify-between hover:-translate-y-1 transition-transform duration-300">
+          <div>
+            <div class="w-12 h-12 bg-amber-50 rounded-2xl flex items-center justify-center text-amber-600 font-bold text-lg mb-6">
+              <i class="fa-solid fa-hand-holding-dollar"></i>
+            </div>
+            <h3 class="text-xl font-bold text-slate-950 mb-3">Beca de Apoyo Social</h3>
+            <p class="text-slate-600 text-sm mb-6 leading-relaxed">
+              Destinada a estudiantes con dificultades socio-económicas debidamente sustentadas a través de evaluación social, asegurando la continuidad de sus estudios.
+            </p>
+          </div>
+          <div class="pt-6 border-t border-slate-50">
+            <span class="text-xs font-bold text-amber-600 block uppercase tracking-widest mb-1">Cobertura</span>
+            <p class="text-slate-900 font-extrabold text-sm">Pensión regulada según escala social</p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Application process -->
+      <div class="mt-20 bg-white border border-slate-150 rounded-3xl p-8 md:p-12 shadow-lg">
+        <h3 class="text-2xl font-bold text-slate-950 mb-8 tracking-tight text-center">Pasos para solicitar una Beca</h3>
+        
+        <div class="grid md:grid-cols-4 gap-6">
+          <div class="space-y-2">
+            <div class="text-amber-500 font-black text-3xl">01</div>
+            <h4 class="font-bold text-slate-900 text-sm">Postulación</h4>
+            <p class="text-slate-600 text-xs leading-relaxed">Inscríbete en el proceso ordinario y aprueba la evaluación general.</p>
+          </div>
+          <div class="space-y-2">
+            <div class="text-amber-500 font-black text-3xl">02</div>
+            <h4 class="font-bold text-slate-900 text-sm">Presentación</h4>
+            <p class="text-slate-650 text-xs leading-relaxed">Envía tus certificados escolares, certificados deportivos o sustento socio-económico.</p>
+          </div>
+          <div class="space-y-2">
+            <div class="text-amber-500 font-black text-3xl">03</div>
+            <h4 class="font-bold text-slate-900 text-sm">Evaluación</h4>
+            <p class="text-slate-650 text-xs leading-relaxed">El comité de bienestar estudiantil revisará tu expediente y emitirá un informe.</p>
+          </div>
+          <div class="space-y-2">
+            <div class="text-amber-500 font-black text-3xl">04</div>
+            <h4 class="font-bold text-slate-900 text-sm">Asignación</h4>
+            <p class="text-slate-650 text-xs leading-relaxed">Los resultados se publicarán junto con tu constancia de matrícula asignada.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  
+  <Footer />
+</Layout>

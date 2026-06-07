@@ -1,11 +1,37 @@
 ---
-import Welcome from '../components/Welcome.astro';
+/**
+ * index.astro — Homepage
+ * Assembles all main sections of the UCP university portal.
+ */
 import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import Loader from '../components/Loader.astro';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import Admission from '../components/Admission.astro';
+import Careers from '../components/Careers.astro';
+import WhyUcp from '../components/WhyUcp.astro';
+import Stats from '../components/Stats.astro';
+import News from '../components/News.astro';
+import Faq from '../components/Faq.astro';
+import Footer from '../components/Footer.astro';
 ---
 
-<Layout>
-	<Welcome />
+<Layout
+  title="UCP | Universidad Carrión Porras — Admisión 2027"
+  description="Bienvenidos al portal oficial de la Universidad Carrión Porras. Formando líderes globales con excelencia académica, investigación científica y valores. Admisión abierta 2027."
+>
+  <Loader />
+  <Header />
+
+  <main>
+    <Hero />
+    <Admission />
+    <Careers />
+    <WhyUcp />
+    <Stats />
+    <News />
+    <Faq />
+  </main>
+
+  <Footer />
 </Layout>

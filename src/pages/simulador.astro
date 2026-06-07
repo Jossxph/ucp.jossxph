@@ -1,0 +1,321 @@
+---
+/**
+ * simulador.astro — Tuition fee simulator with real-time calculations.
+ */
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import PageBanner from '../components/PageBanner.astro';
+import { careersData } from '../data/carreras';
+
+const techCareers = careersData.filter(c => c.category === 'tech');
+const saludCareers = careersData.filter(c => c.category === 'salud');
+const humCareers = careersData.filter(c => c.category === 'hum');
+const negCareers = careersData.filter(c => c.category === 'neg');
+---
+
+<Layout title="Simulador de Pensiones | Universidad Carrión Porras" description="Calcula tus cuotas, costo de matrícula y simula becas en tiempo real para estudiar en la Universidad Carrión Porras.">
+  <Header />
+
+  <main class="bg-slate-50 min-h-screen">
+    <PageBanner
+      badge="Transparencia y Planificación"
+      title="Simulador de Pensiones"
+      description="Obtén un presupuesto estimado para tu carrera profesional en la UCP. Configura tu perfil y descubre el beneficio de nuestras becas en tiempo real."
+    />
+
+    <!-- Simulator Section -->
+    <section class="section-padding container-max">
+      <div class="grid lg:grid-cols-12 gap-8 items-stretch">
+
+        <!-- Left: Inputs -->
+        <div class="lg:col-span-5 bg-white p-8 rounded-3xl border border-slate-200/60 shadow-lg flex flex-col justify-between">
+          <div>
+            <h2 class="text-xl font-bold text-slate-900 mb-1 flex items-center gap-2.5">
+              <span class="w-9 h-9 rounded-xl bg-amber-50 flex items-center justify-center">
+                <i class="fa-solid fa-sliders text-amber-600 text-sm"></i>
+              </span>
+              Configura tu Perfil
+            </h2>
+            <p class="text-slate-400 text-xs mb-7">Ingresa tus datos para simular tus costos de estudio.</p>
+
+            <div class="space-y-5">
+              <!-- Career Select -->
+              <div>
+                <label for="sim-career" class="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-2">
+                  <i class="fa-solid fa-graduation-cap text-amber-500 text-[10px] mr-1"></i> Selecciona Carrera
+                </label>
+                <select id="sim-career"
+                  class="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 text-sm focus:outline-none focus:border-amber-500 focus:ring-2 focus:ring-amber-500/15 transition-all">
+                  <optgroup label="Tecnología e Ingeniería">
+                    {techCareers.map(c => (
+                      <option value={c.key} data-base={c.basePension} data-mat={c.baseMatricula}>
+                        {c.title} — S/ {c.basePension.toLocaleString()}/mes
+                      </option>
+                    ))}
+                  </optgroup>
+                  <optgroup label="Ciencias de la Salud">
+                    {saludCareers.map(c => (
+                      <option value={c.key} data-base={c.basePension} data-mat={c.baseMatricula}>
+                        {c.title} — S/ {c.basePension.toLocaleString()}/mes
+                      </option>
+                    ))}
+                  </optgroup>
+                  <optgroup label="Derecho y Humanidades">
+                    {humCareers.map(c => (
+                      <option value={c.key} data-base={c.basePension} data-mat={c.baseMatricula}>
+                        {c.title} — S/ {c.basePension.toLocaleString()}/mes
+                      </option>
+                    ))}
+                  </optgroup>
+                  <optgroup label="Negocios y Gestión">
+                    {negCareers.map(c => (
+                      <option value={c.key} data-base={c.basePension} data-mat={c.baseMatricula}>
+                        {c.title} — S/ {c.basePension.toLocaleString()}/mes
+                      </option>
+                    ))}
+                  </optgroup>
+                </select>
+              </div>
+
+              <!-- School Type -->
+              <div>
+                <label class="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-3">
+                  <i class="fa-solid fa-school text-amber-500 text-[10px] mr-1"></i> Colegio de Procedencia
+                </label>
+                <div class="grid grid-cols-2 gap-3">
+                  <label class="sim-school-card border-2 border-slate-200 rounded-xl p-4 flex flex-col items-center gap-2 cursor-pointer hover:border-amber-500/60 transition-all relative select-none">
+                    <input type="radio" name="sim-school" value="estatal" checked class="sr-only" />
+                    <span class="w-10 h-10 rounded-xl bg-slate-100 flex items-center justify-center">
+                      <i class="fa-solid fa-school text-slate-400 text-sm"></i>
+                    </span>
+                    <span class="text-xs font-bold text-slate-700">Colegio Estatal</span>
+                    <span class="text-[10px] text-emerald-600 font-semibold">-10% Dscto.</span>
+                    <div class="sim-check-indicator absolute top-2 right-2 w-5 h-5 rounded-lg border border-slate-300 flex items-center justify-center text-[8px] bg-slate-100 text-slate-500">
+                      <i class="fa-solid fa-check"></i>
+                    </div>
+                  </label>
+
+                  <label class="sim-school-card border-2 border-slate-200 rounded-xl p-4 flex flex-col items-center gap-2 cursor-pointer hover:border-amber-500/60 transition-all relative select-none">
+                    <input type="radio" name="sim-school" value="privado" class="sr-only" />
+                    <span class="w-10 h-10 rounded-xl bg-slate-100 flex items-center justify-center">
+                      <i class="fa-solid fa-graduation-cap text-slate-400 text-sm"></i>
+                    </span>
+                    <span class="text-xs font-bold text-slate-700">Colegio Privado</span>
+                    <span class="text-[10px] text-slate-400 font-semibold">Costo Regular</span>
+                    <div class="sim-check-indicator absolute top-2 right-2 w-5 h-5 rounded-lg border border-slate-300 flex items-center justify-center text-[8px] bg-slate-100 text-slate-500">
+                      <i class="fa-solid fa-check"></i>
+                    </div>
+                  </label>
+                </div>
+              </div>
+
+              <!-- Enrollment Type -->
+              <div>
+                <label for="sim-enrollment-type" class="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-2">
+                  <i class="fa-solid fa-file-invoice text-amber-500 text-[10px] mr-1"></i> Modalidad de Matrícula
+                </label>
+                <select id="sim-enrollment-type"
+                  class="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 text-sm focus:outline-none focus:border-amber-500 focus:ring-2 focus:ring-amber-500/15 transition-all">
+                  <option value="regular" data-extra="0">Ordinaria / Regular</option>
+                  <option value="extemporanea" data-extra="120">Extemporánea (+ S/ 120)</option>
+                  <option value="preferencial" data-extra="200">Preferencial (+ S/ 200)</option>
+                </select>
+              </div>
+
+              <!-- Scholarship -->
+              <div>
+                <label for="sim-scholarship" class="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-2">
+                  <i class="fa-solid fa-hand-holding-dollar text-amber-500 text-[10px] mr-1"></i> Beca / Beneficio
+                </label>
+                <select id="sim-scholarship"
+                  class="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 text-sm focus:outline-none focus:border-amber-500 focus:ring-2 focus:ring-amber-500/15 transition-all">
+                  <option value="none" data-discount="0">Sin beneficios de beca</option>
+                  <option value="deportes" data-discount="25">Beca Deportiva (-25%)</option>
+                  <option value="rendimiento" data-discount="30">Tercio Superior (-30%)</option>
+                  <option value="socioeconomica" data-discount="50">Beca Socioeconómica (-50%)</option>
+                  <option value="excelencia" data-discount="100">Beca Excelencia 1er Puesto (-100%)</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-7 pt-5 border-t border-slate-100">
+            <a href="/contacto" class="btn-dark w-full justify-center">
+              <i class="fa-solid fa-headset text-gold-400 text-xs"></i>
+              Contactar con un Asesor
+            </a>
+          </div>
+        </div>
+
+        <!-- Right: Results Dashboard -->
+        <div class="lg:col-span-7 bg-gradient-to-br from-navy-900 to-navy-950 text-white p-8 md:p-10 rounded-3xl border border-white/5 shadow-2xl flex flex-col justify-between relative overflow-hidden">
+          <div class="absolute -right-10 -top-10 w-48 h-48 bg-gold-500/10 rounded-full filter blur-[60px] pointer-events-none"></div>
+
+          <div class="relative z-10">
+            <span class="badge-dark mb-6">
+              <i class="fa-solid fa-chart-pie text-[10px]"></i>
+              Resumen Presupuestal Estimado
+            </span>
+
+            <h3 class="text-lg font-bold mb-8 border-b border-white/5 pb-4 flex items-center gap-2">
+              <i class="fa-solid fa-receipt text-gold-400 text-sm"></i>
+              Detalle de Costos Semestrales
+            </h3>
+
+            <div class="space-y-5">
+              <div class="flex justify-between items-center text-sm">
+                <span class="text-slate-400">Pensión base mensual</span>
+                <span class="font-bold text-slate-200" id="res-base">S/ 1,200.00</span>
+              </div>
+
+              <div class="flex justify-between items-center text-sm">
+                <span class="text-slate-400">Descuento procedencia</span>
+                <span class="font-bold text-emerald-400" id="res-school-discount">- S/ 120.00</span>
+              </div>
+
+              <div class="flex justify-between items-center text-sm">
+                <span class="text-slate-400 flex items-center gap-1.5">
+                  Descuento por Beca
+                  <span id="res-scholarship-badge" class="bg-gold-500/20 text-gold-400 text-[9px] font-bold px-1.5 py-0.5 rounded-md hidden">30%</span>
+                </span>
+                <span class="font-bold text-emerald-400" id="res-scholarship-discount">- S/ 0.00</span>
+              </div>
+
+              <div class="border-t border-white/5 my-3"></div>
+
+              <!-- Final Monthly -->
+              <div class="bg-white/[0.03] border border-white/5 p-6 rounded-2xl flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                <div>
+                  <h4 class="text-sm font-bold text-gold-400 flex items-center gap-1.5">
+                    <i class="fa-solid fa-coins text-[10px]"></i> Pensión Final Mensual
+                  </h4>
+                  <p class="text-xs text-slate-500 mt-1">Calculada sobre 5 cuotas al semestre</p>
+                </div>
+                <div class="text-left sm:text-right">
+                  <div class="text-3xl font-black text-white" id="res-final-pension">S/ 1,080.00</div>
+                  <span class="text-[10px] text-emerald-400 font-bold" id="res-total-discount-percent">Descuento Total: 10%</span>
+                </div>
+              </div>
+
+              <div class="flex justify-between items-center text-sm pt-3">
+                <span class="text-slate-400">Matrícula (pago único semestral)</span>
+                <span class="font-bold text-slate-200" id="res-matricula">S/ 450.00</span>
+              </div>
+
+              <div class="flex justify-between items-center text-sm">
+                <div>
+                  <span class="text-slate-300 font-bold block">Inversión Estimada Semestral</span>
+                  <span class="text-[10px] text-slate-500 mt-0.5 block">(1 Matrícula + 5 Cuotas Mensuales)</span>
+                </div>
+                <span class="font-black text-2xl text-gold-400" id="res-total-semester">S/ 5,850.00</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="relative z-10 bg-white/[0.03] p-4 rounded-xl border border-white/5 mt-7 flex gap-3 text-xs text-slate-500 items-start">
+            <i class="fa-solid fa-circle-info text-gold-500 mt-0.5 flex-shrink-0"></i>
+            <p>Los costos simulados son referenciales y sujetos a evaluación socioeconómica y académica formal por el comité de admisión UCP.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
+
+<script>
+  const careerSelect = document.getElementById('sim-career') as HTMLSelectElement;
+  const scholarshipSelect = document.getElementById('sim-scholarship') as HTMLSelectElement;
+  const enrollmentTypeSelect = document.getElementById('sim-enrollment-type') as HTMLSelectElement;
+  const schoolInputs = document.querySelectorAll('input[name="sim-school"]');
+
+  const resBase = document.getElementById('res-base');
+  const resSchoolDiscount = document.getElementById('res-school-discount');
+  const resScholarshipBadge = document.getElementById('res-scholarship-badge');
+  const resScholarshipDiscount = document.getElementById('res-scholarship-discount');
+  const resFinalPension = document.getElementById('res-final-pension');
+  const resTotalDiscountPercent = document.getElementById('res-total-discount-percent');
+  const resMatricula = document.getElementById('res-matricula');
+  const resTotalSemester = document.getElementById('res-total-semester');
+
+  function updateSimulation() {
+    if (!careerSelect || !scholarshipSelect || !enrollmentTypeSelect) return;
+
+    const selectedOption = careerSelect.options[careerSelect.selectedIndex];
+    const basePension = parseFloat(selectedOption.getAttribute('data-base') || '0');
+    const baseMatricula = parseFloat(selectedOption.getAttribute('data-mat') || '350');
+
+    let schoolDiscountMultiplier = 0.0;
+
+    schoolInputs.forEach(input => {
+      const radio = input as HTMLInputElement;
+      const card = radio.closest('label');
+      const check = card?.querySelector('.sim-check-indicator');
+      const iconBox = card?.querySelector('.w-10');
+
+      if (radio.checked) {
+        card?.classList.replace('border-slate-200', 'border-amber-500');
+        card?.classList.add('bg-amber-500/5');
+        check?.classList.replace('bg-slate-100', 'bg-amber-600');
+        check?.classList.replace('text-slate-500', 'text-white');
+        check?.classList.replace('border-slate-300', 'border-amber-600');
+        if (radio.value === 'estatal') schoolDiscountMultiplier = 0.10;
+      } else {
+        card?.classList.replace('border-amber-500', 'border-slate-200');
+        card?.classList.remove('bg-amber-500/5');
+        check?.classList.replace('bg-amber-600', 'bg-slate-100');
+        check?.classList.replace('text-white', 'text-slate-500');
+        check?.classList.replace('border-amber-600', 'border-slate-300');
+      }
+    });
+
+    const scholarOption = scholarshipSelect.options[scholarshipSelect.selectedIndex];
+    const scholarshipDiscountPercent = parseFloat(scholarOption.getAttribute('data-discount') || '0');
+
+    const enrollOption = enrollmentTypeSelect.options[enrollmentTypeSelect.selectedIndex];
+    const matriculaExtra = parseFloat(enrollOption.getAttribute('data-extra') || '0');
+
+    const schoolDiscountAmount = basePension * schoolDiscountMultiplier;
+    const scholarshipDiscountAmount = basePension * (scholarshipDiscountPercent / 100);
+
+    let finalPension = Math.max(0, basePension - schoolDiscountAmount - scholarshipDiscountAmount);
+    const totalDiscountPercent = Math.min(100, Math.round(((basePension - finalPension) / basePension) * 100) || 0);
+
+    let matriculaCost = baseMatricula + matriculaExtra;
+    if (scholarshipDiscountPercent === 100) {
+      matriculaCost = Math.round(matriculaCost * 0.5);
+    }
+
+    const totalSemesterCost = (finalPension * 5) + matriculaCost;
+
+    const fmt = (val: number) => `S/ ${val.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+
+    if (resBase) resBase.textContent = fmt(basePension);
+    if (resSchoolDiscount) resSchoolDiscount.textContent = `- ${fmt(schoolDiscountAmount)}`;
+    if (resScholarshipDiscount) resScholarshipDiscount.textContent = `- ${fmt(scholarshipDiscountAmount)}`;
+
+    if (resScholarshipBadge) {
+      if (scholarshipDiscountPercent > 0) {
+        resScholarshipBadge.textContent = `${scholarshipDiscountPercent}%`;
+        resScholarshipBadge.classList.remove('hidden');
+      } else {
+        resScholarshipBadge.classList.add('hidden');
+      }
+    }
+
+    if (resFinalPension) resFinalPension.textContent = fmt(finalPension);
+    if (resTotalDiscountPercent) resTotalDiscountPercent.textContent = `Descuento Total: ${totalDiscountPercent}%`;
+    if (resMatricula) resMatricula.textContent = fmt(matriculaCost);
+    if (resTotalSemester) resTotalSemester.textContent = fmt(totalSemesterCost);
+  }
+
+  careerSelect?.addEventListener('change', updateSimulation);
+  scholarshipSelect?.addEventListener('change', updateSimulation);
+  enrollmentTypeSelect?.addEventListener('change', updateSimulation);
+  schoolInputs.forEach(input => input.addEventListener('change', updateSimulation));
+
+  updateSimulation();
+</script>

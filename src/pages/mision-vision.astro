@@ -1,0 +1,113 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="Misión, Visión y Valores | Universidad Carrión Porras" description="Conoce el propósito institucional, la visión de cara al futuro y los valores éticos fundamentales de la Universidad Carrión Porras.">
+  <Header />
+  
+  <main class="bg-slate-50 min-h-screen">
+    <!-- Banner Header -->
+    <section class="relative bg-slate-900 text-white py-24 overflow-hidden">
+      <div class="absolute inset-0 opacity-20 bg-[linear-gradient(to_right,#334155_1px,transparent_1px),linear-gradient(to_bottom,#334155_1px,transparent_1px)] bg-[size:4rem_4rem]"></div>
+      <div class="max-w-4xl mx-auto px-4 text-center relative z-10">
+        <span class="text-amber-500 font-bold text-xs uppercase tracking-widest bg-amber-500/10 px-4 py-1.5 rounded-full inline-block mb-4">
+          Propósito Institucional
+        </span>
+        <h1 class="text-4xl md:text-5xl font-black mb-6 tracking-tight">Misión, Visión y Valores</h1>
+        <p class="text-slate-350 text-lg leading-relaxed max-w-2xl mx-auto">
+          Los pilares estratégicos y éticos que guían cada uno de nuestros pasos y decisiones en la formación académica.
+        </p>
+      </div>
+    </section>
+
+    <!-- Mission & Vision Section -->
+    <section class="py-24 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid md:grid-cols-2 gap-12 mb-20">
+        
+        <!-- Mision Card -->
+        <div class="bg-white p-8 md:p-12 rounded-3xl border border-slate-200/50 shadow-md flex flex-col justify-between group hover:-translate-y-1 transition-transform duration-350">
+          <div>
+            <div class="w-16 h-16 bg-amber-500/10 rounded-2xl flex items-center justify-center mb-8 border border-amber-500/25">
+              <i class="fa-solid fa-graduation-cap text-2xl text-amber-600"></i>
+            </div>
+            <h2 class="text-2xl font-extrabold text-slate-950 mb-4 tracking-tight">Nuestra Misión</h2>
+            <p class="text-slate-600 text-base leading-relaxed">
+              Formar profesionales e investigadores con excelencia académica, criterio ético, pensamiento crítico e innovación tecnológica, comprometidos activamente con el desarrollo sostenible del país y preparados para competir en mercados laborales globales.
+            </p>
+          </div>
+        </div>
+
+        <!-- Vision Card -->
+        <div class="bg-slate-900 text-white p-8 md:p-12 rounded-3xl border border-slate-800 shadow-xl flex flex-col justify-between group hover:-translate-y-1 transition-transform duration-350">
+          <div>
+            <div class="w-16 h-16 bg-amber-500/10 rounded-2xl flex items-center justify-center mb-8 border border-amber-500/20">
+              <i class="fa-solid fa-eye text-2xl text-amber-400"></i>
+            </div>
+            <h2 class="text-2xl font-extrabold text-white mb-4 tracking-tight">Nuestra Visión</h2>
+            <p class="text-slate-300 text-base leading-relaxed">
+              Ser reconocidos hacia el año 2030 como una universidad líder en educación superior por nuestra innovación pedagógica, alta empleabilidad de los egresados, producción científica de impacto internacional y alianzas estratégicas globales de primer nivel.
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Core Values -->
+      <div class="border-t border-slate-200/80 pt-20">
+        <h2 class="text-3xl font-extrabold text-slate-950 text-center mb-16 tracking-tight">Nuestros Valores Institucionales</h2>
+        
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          
+          <!-- Valor 1: Excelencia -->
+          <div class="bg-white p-6 rounded-2xl border border-slate-200/50 shadow-sm text-center">
+            <div class="w-12 h-12 bg-amber-50 rounded-xl flex items-center justify-center mb-4 mx-auto text-amber-600 font-bold text-lg">
+              <i class="fa-solid fa-star"></i>
+            </div>
+            <h3 class="font-extrabold text-slate-950 mb-2">Excelencia</h3>
+            <p class="text-slate-600 text-xs leading-relaxed">
+              Buscamos la máxima calidad en todos nuestros procesos formativos, de investigación y administrativos.
+            </p>
+          </div>
+
+          <!-- Valor 2: Integridad -->
+          <div class="bg-white p-6 rounded-2xl border border-slate-200/50 shadow-sm text-center">
+            <div class="w-12 h-12 bg-amber-50 rounded-xl flex items-center justify-center mb-4 mx-auto text-amber-600 font-bold text-lg">
+              <i class="fa-solid fa-shield-halved"></i>
+            </div>
+            <h3 class="font-extrabold text-slate-950 mb-2">Integridad</h3>
+            <p class="text-slate-600 text-xs leading-relaxed">
+              Fomentamos la ética, honestidad, responsabilidad académica y el respeto mutuo en toda la comunidad.
+            </p>
+          </div>
+
+          <!-- Valor 3: Innovación -->
+          <div class="bg-white p-6 rounded-2xl border border-slate-200/50 shadow-sm text-center">
+            <div class="w-12 h-12 bg-amber-50 rounded-xl flex items-center justify-center mb-4 mx-auto text-amber-600 font-bold text-lg">
+              <i class="fa-solid fa-lightbulb"></i>
+            </div>
+            <h3 class="font-extrabold text-slate-950 mb-2">Innovación</h3>
+            <p class="text-slate-600 text-xs leading-relaxed">
+              Impulsamos la creatividad científica, el desarrollo tecnológico y la adaptación a nuevos paradigmas globales.
+            </p>
+          </div>
+
+          <!-- Valor 4: Compromiso -->
+          <div class="bg-white p-6 rounded-2xl border border-slate-200/50 shadow-sm text-center">
+            <div class="w-12 h-12 bg-amber-50 rounded-xl flex items-center justify-center mb-4 mx-auto text-amber-600 font-bold text-lg">
+              <i class="fa-solid fa-handshake-angle"></i>
+            </div>
+            <h3 class="font-extrabold text-slate-950 mb-2">Compromiso</h3>
+            <p class="text-slate-600 text-xs leading-relaxed">
+              Comprometidos con la inclusión social, la diversidad humana y la contribución activa al desarrollo nacional.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+  
+  <Footer />
+</Layout>
