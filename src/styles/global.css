@@ -21,35 +21,35 @@
   --color-slate-900: #1a1a18;
   --color-slate-950: #0d0d0c;
 
-  /* ── Hero / Dark Sections (Deep Navy-Charcoal) ── */
-  --color-navy-950: #080c14;
-  --color-navy-900: #0e1420;
-  --color-navy-800: #151d2e;
-  --color-navy-700: #1e293b;
+  /* ── Hero / Dark Sections (Midnight Blue) ── */
+  --color-navy-950: #050b14;
+  --color-navy-900: #0a1424;
+  --color-navy-800: #122038;
+  --color-navy-700: #1c304d;
 
-  /* ── Primary Brand: University Gold ── */
-  --color-gold-50: #fffef7;
-  --color-gold-100: #fef9e7;
-  --color-gold-200: #fef0c3;
-  --color-gold-300: #fde58a;
-  --color-gold-400: #f9d654;
-  --color-gold-500: #e8b810;
-  --color-gold-600: #c9990d;
-  --color-gold-700: #a47b0a;
-  --color-gold-800: #7c5c07;
-  --color-gold-900: #543d04;
+  /* ── Primary Brand: University Gold (Oro Metálico Premium) ── */
+  --color-gold-50: #fcfaf2;
+  --color-gold-100: #f7f0db;
+  --color-gold-200: #ebdcb4;
+  --color-gold-300: #dec587;
+  --color-gold-400: #d0ad5b;
+  --color-gold-500: #c29438;
+  --color-gold-600: #a37829;
+  --color-gold-700: #825e1e;
+  --color-gold-800: #614413;
+  --color-gold-900: #422e0a;
 
-  /* ── Accent: Amber (CTAs, Buttons) ── */
-  --color-amber-50: #fffdf5;
-  --color-amber-100: #fef9e7;
-  --color-amber-200: #fef0c3;
-  --color-amber-300: #fde58a;
-  --color-amber-400: #fbd84b;
-  --color-amber-500: #f0c020;
-  --color-amber-600: #d4a017;
-  --color-amber-700: #b58510;
-  --color-amber-800: #8c640d;
-  --color-amber-900: #5c4008;
+  /* ── Accent: Amber / CTA Gold ── */
+  --color-amber-50: #fdfaf2;
+  --color-amber-100: #fbf1d5;
+  --color-amber-200: #f6e0aa;
+  --color-amber-300: #eec97a;
+  --color-amber-400: #e3ae4b;
+  --color-amber-500: #d99b26;
+  --color-amber-600: #be821a;
+  --color-amber-700: #9c6810;
+  --color-amber-800: #7b500a;
+  --color-amber-900: #5a3905;
 
   /* ── Success / Emerald ── */
   --color-emerald-400: #34d399;
@@ -74,13 +74,16 @@
   ::-webkit-scrollbar {
     width: 8px;
   }
+
   ::-webkit-scrollbar-track {
     background: var(--color-slate-100);
   }
+
   ::-webkit-scrollbar-thumb {
     background: var(--color-slate-400);
     border-radius: 9999px;
   }
+
   ::-webkit-scrollbar-thumb:hover {
     background: var(--color-gold-600);
   }
@@ -96,70 +99,157 @@
    ANIMATION KEYFRAMES
    ============================================================ */
 @keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(24px); }
-  to   { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes fadeInDown {
-  from { opacity: 0; transform: translateY(-16px); }
-  to   { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(-16px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to   { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes scaleUp {
-  from { opacity: 0; transform: scale(0.92); }
-  to   { opacity: 1; transform: scale(1); }
+  from {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 @keyframes slideInLeft {
-  from { opacity: 0; transform: translateX(-32px); }
-  to   { opacity: 1; transform: translateX(0); }
+  from {
+    opacity: 0;
+    transform: translateX(-32px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 @keyframes slideInRight {
-  from { opacity: 0; transform: translateX(32px); }
-  to   { opacity: 1; transform: translateX(0); }
+  from {
+    opacity: 0;
+    transform: translateX(32px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 @keyframes shimmer {
-  0% { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
+  0% {
+    background-position: -200% 0;
+  }
+
+  100% {
+    background-position: 200% 0;
+  }
 }
 
 @keyframes pulse-glow {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(232, 184, 16, 0.4); }
-  50%      { box-shadow: 0 0 0 12px rgba(232, 184, 16, 0); }
+
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(232, 184, 16, 0.4);
+  }
+
+  50% {
+    box-shadow: 0 0 0 12px rgba(232, 184, 16, 0);
+  }
 }
 
 @keyframes spin-slow {
-  0%   { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 @keyframes progress {
-  0%   { transform: translateX(-100%); }
-  50%  { transform: translateX(100%); }
-  100% { transform: translateX(-100%); }
+  0% {
+    transform: translateX(-100%);
+  }
+
+  50% {
+    transform: translateX(100%);
+  }
+
+  100% {
+    transform: translateX(-100%);
+  }
 }
 
 @keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50%      { transform: translateY(-12px); }
+
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-12px);
+  }
 }
 
 @keyframes countUp {
-  from { opacity: 0; transform: translateY(10px); }
-  to   { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes gradient-shift {
-  0%   { background-position: 0% 50%; }
-  50%  { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 /* ============================================================
@@ -217,12 +307,29 @@
 }
 
 /* Staggered delays for card grids */
-.stagger-1 { animation-delay: 0.05s; }
-.stagger-2 { animation-delay: 0.1s; }
-.stagger-3 { animation-delay: 0.15s; }
-.stagger-4 { animation-delay: 0.2s; }
-.stagger-5 { animation-delay: 0.25s; }
-.stagger-6 { animation-delay: 0.3s; }
+.stagger-1 {
+  animation-delay: 0.05s;
+}
+
+.stagger-2 {
+  animation-delay: 0.1s;
+}
+
+.stagger-3 {
+  animation-delay: 0.15s;
+}
+
+.stagger-4 {
+  animation-delay: 0.2s;
+}
+
+.stagger-5 {
+  animation-delay: 0.25s;
+}
+
+.stagger-6 {
+  animation-delay: 0.3s;
+}
 
 /* ============================================================
    COMPONENT CLASSES (Plain CSS — TailwindCSS 4 compatible)
@@ -233,6 +340,7 @@
   padding-top: 6rem;
   padding-bottom: 6rem;
 }
+
 @media (min-width: 768px) {
   .section-padding {
     padding-top: 7rem;
@@ -248,12 +356,14 @@
   padding-left: 1rem;
   padding-right: 1rem;
 }
+
 @media (min-width: 640px) {
   .container-max {
     padding-left: 1.5rem;
     padding-right: 1.5rem;
   }
 }
+
 @media (min-width: 1024px) {
   .container-max {
     padding-left: 2rem;
@@ -300,6 +410,7 @@
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
+
 .btn-primary:hover {
   background-color: var(--color-amber-700);
   box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
@@ -320,6 +431,7 @@
   transition: all 0.3s ease;
   font-size: 0.875rem;
 }
+
 .btn-secondary:hover {
   border-color: #fff;
   background: rgba(255, 255, 255, 0.1);
@@ -340,6 +452,7 @@
   transition: all 0.3s ease;
   font-size: 0.875rem;
 }
+
 .btn-dark:hover {
   background-color: var(--color-navy-800);
   box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
@@ -415,8 +528,8 @@
 .card-hover {
   transition: all 0.3s ease;
 }
+
 .card-hover:hover {
   box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
   transform: translateY(-4px);
 }
-
